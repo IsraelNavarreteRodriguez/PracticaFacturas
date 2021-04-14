@@ -1,45 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<layout>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
     <data>
+
         <variable
             name="listFacturasFragment"
             type="com.example.practicafacturas.ui.factura.fragment.ListFacturasFragment" />
     </data>
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".FirstFragment">
-
     <LinearLayout
-        android:id="@+id/llNoData"
+        android:id="@+id/llData"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:visibility="gone">
+        android:visibility="visible"
+        tools:context=".FirstFragment">
 
-        <TextView
-            android:id="@+id/tvNoData"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvFacturas"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/tvNoData"
-            android:textColor="@color/white"
-            android:textSize="30sp" />
+            android:layout_height="match_parent" />
 
+        <include
+            layout="@layout/layout_loading"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <LinearLayout
+            android:id="@+id/llNoData"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <TextView
+                android:id="@+id/tvNoData"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/tvNoData"
+                android:textColor="@color/white"
+                android:textSize="30sp" />
+
+        </LinearLayout>
     </LinearLayout>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvFacturas"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
 
-    <include
-        layout="@layout/layout_loading"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
-</LinearLayout>
 
 </layout>

@@ -42,3 +42,16 @@ Añadido Boton Filter en toolbar
 -------------------TODO----------------------------------
 
 Arreglar errores de dateParser()
+
+---------------------HECHO--------------------------------
+
+Arreglado errores dataparser()
+
+arreglado mvvm mal implementado
+
+-------------------TODO----------------------------------
+
+hacer funcional la corutina
+
+
+

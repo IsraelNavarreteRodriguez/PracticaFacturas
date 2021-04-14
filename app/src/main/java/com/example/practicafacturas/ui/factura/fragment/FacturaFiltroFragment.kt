@@ -46,7 +46,8 @@ class FacturaFiltroFragment : Fragment() {
         binding.btFilter.setOnClickListener {
             val bundle = Bundle()
             putBundle(bundle)
-            view.findNavController().navigate(R.id.action_SecondFragment_to_FirstFragment, bundle)
+            view.findNavController()
+                .navigate(R.id.action_facturaFiltroFragment_to_listFacturaFragment, bundle)
         }
         binding.btEliminateFilter.setOnClickListener {
             eliminateFilters(
@@ -75,7 +76,7 @@ class FacturaFiltroFragment : Fragment() {
     private fun getEstado(): BooleanArray? {
         val result = mutableListOf<Boolean>()
         result.add(binding.chkPagada.isChecked)
-        result.add(binding.chkPagada.isChecked)
+        result.add(binding.chkPendiente.isChecked)
         return result.toBooleanArray()
     }
 
@@ -107,7 +108,10 @@ class FacturaFiltroFragment : Fragment() {
         val datePickerDialog = DatePickerDialog(
             requireContext(),
             DatePickerDialog.OnDateSetListener { view, year, month, dayOfMonth ->
-                button.text = "$dayOfMonth/$month/$year"
+                if (month.toString().length == 1)
+                    button.text = "$dayOfMonth/0$month/$year"
+                else
+                    button.text = "$dayOfMonth/$month/$year"
             },
             year,
             month,
