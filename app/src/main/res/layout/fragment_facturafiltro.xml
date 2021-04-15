@@ -16,14 +16,14 @@
         android:orientation="vertical"
         tools:context=".ui.factura.fragment.FacturaFiltroFragment">
 
-       <!--<ImageView
-            android:id="@+id/imgviewClose"
+
+        <TextView
+            android:id="@+id/tvFiltroFacturas"
             android:layout_width="wrap_content"
+            android:textColor="@color/black"
+            android:textSize="40sp"
             android:layout_height="wrap_content"
-            android:layout_gravity="right"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="10dp"
-            android:src="@drawable/ic_close" />-->
+            android:text="@string/tvFiltroFacturas" />
 
         <TextView
             android:id="@+id/tvFechaDeAdmision"
@@ -56,7 +56,7 @@
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/gray"
                 android:text="@string/btFecha"
-                app:layout_constraintStart_toEndOf="@+id/tvDesde"
+                app:layout_constraintStart_toStartOf="@+id/tvDesde"
                 app:layout_constraintTop_toBottomOf="@+id/tvDesde" />
 
             <TextView
@@ -72,10 +72,9 @@
                 android:id="@+id/btHasta"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="10dp"
                 android:backgroundTint="@color/gray"
                 android:text="@string/btFecha"
-                app:layout_constraintStart_toEndOf="@+id/tvHasta"
+                app:layout_constraintStart_toStartOf="@+id/tvHasta"
                 app:layout_constraintTop_toBottomOf="@+id/tvHasta" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -153,7 +152,8 @@
         <Button
             android:id="@+id/btEliminateFilter"
             android:layout_width="match_parent"
-            android:backgroundTint="@color/gray"
+            android:textColor="@color/gray"
+            style="@style/Widget.AppCompat.Button.Borderless"
             android:layout_height="wrap_content"
             android:text="@string/btEliminateFilter" />
 

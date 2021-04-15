@@ -7,4 +7,10 @@
         android:icon="@drawable/ic_baseline_filter_list_24"
         android:title="@string/action_filter"
         app:showAsAction="always" />
+
+    <item
+        android:id="@+id/action_cancel"
+        android:icon="@drawable/ic_close"
+        android:title="@string/action_nofilter"
+        app:showAsAction="ifRoom" />
 </menu>

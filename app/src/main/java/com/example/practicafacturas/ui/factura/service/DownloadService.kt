@@ -10,12 +10,16 @@ import kotlinx.coroutines.*
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
+/**
+ * Serivio encargado de descargar el json
+ */
 class DownloadService : Service() {
+
     override fun onBind(intent: Intent?): IBinder? {
         return null
     }
     private var retrofit: Retrofit = Retrofit.Builder()
-        .baseUrl("https://viewnextandroid.mocklab.io/facturas/")
+        .baseUrl("https://viewnextandroid.mocklab.io/")
         .addConverterFactory(GsonConverterFactory.create())
         .build()
 
@@ -24,7 +28,7 @@ class DownloadService : Service() {
     /**
      * Recoge las facturas del json de https://viewnextandroid.mocklab.io/facturas/ en un hilo aparte
      */
-    suspend fun getJsonArray() : JsonArray?{
+    private suspend fun getJsonArray() : JsonArray?{
         var jsonArray : JsonArray? = null
         val coroutine = CoroutineScope(Dispatchers.IO)
         val result : Deferred<JsonArray?> = coroutine.async{

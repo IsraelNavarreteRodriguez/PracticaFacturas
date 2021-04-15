@@ -26,4 +26,7 @@
     <string name="btEliminateFilter">Eliminar filtros</string>
     <string name="action_filter">FIltro</string>
     <string name="facturafiltro_fragment">FacturaFiltroFragment</string>
+    <string name="tvFacturas">Facturas</string>
+    <string name="tvFiltroFacturas">Filtrar facturas</string>
+    <string name="action_nofilter">NoFilter</string>
 </resources>

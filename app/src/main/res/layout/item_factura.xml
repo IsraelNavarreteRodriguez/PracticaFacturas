@@ -12,6 +12,7 @@
         android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
         android:layout_weight="1"
+        android:textColor="@color/black"
         android:text="@string/tvFecha"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -21,6 +22,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
+        android:textColor="@color/black"
         android:text="@string/importeOrdenacion"
         app:layout_constraintBottom_toTopOf="@+id/tvDescEstado"
         app:layout_constraintEnd_toEndOf="parent"
@@ -31,6 +33,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
+        android:textColor="@color/red"
         android:layout_marginTop="20dp"
         android:text="@string/descEstado"
         app:layout_constraintStart_toStartOf="parent"
