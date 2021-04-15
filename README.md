@@ -33,6 +33,7 @@ Añadido componente decoration a Recycler
 
 Añadido Service
 
+
 Eliminado Repository
 
 Arreglado Filter
@@ -54,4 +55,13 @@ arreglado mvvm mal implementado
 hacer funcional la corutina
 
 
+15/04/2021
+
+---------------------HECHO--------------------------------
+
+Completado todos los requisitos de la aplicacion
+
+-------------------TODO----------------------------------
+
+Comprobar aplicacion con Juan
 
