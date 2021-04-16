@@ -4,41 +4,47 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.practicafacturas.data.model.Factura
 import com.example.practicafacturas.ui.factura.service.DownloadService
-import com.example.practicafacturas.ui.factura.utils.FilterFactura
 import com.example.practicafacturas.ui.factura.utils.JsonToFactura
-import com.google.gson.JsonArray
-import java.time.LocalDate
 
 /**
  * ViewModel de factura
  */
-class FacturaViewModel : ViewModel(){
+class FacturaViewModel : ViewModel() {
 
-    val lista :  MutableLiveData<List<Factura>> = MutableLiveData()
+    val liveData: MutableLiveData<List<Factura>> = MutableLiveData()
+    var actualFilter = InvoiceFilter()
+    lateinit var defaultFilter: InvoiceFilter
+    private val service = DownloadService()
+    var listFactura: List<Factura> = listOf()
 
-    companion object{
-        var json : JsonArray? = null
-        private val service = DownloadService()
-
-        /**
-         * Descarga el json y lo guarda
-         */
-        fun getJson(){
-            json = service.returnJsonArray()
+    /**
+     * Descarga el json y lo guarda
+     */
+    fun downloadJson() {
+        if (listFactura.isNullOrEmpty()) {
+            val jsonFactura = service.returnJsonArray()
+            listFactura = JsonToFactura.parseToList(jsonFactura)
+            liveData.postValue(listFactura)
+            defaultFilter = InvoiceFilter(
+                listFactura.first().fecha,
+                listFactura.last().fecha,
+                JsonToFactura.getMaxImporte(listFactura)
+            )
+            this.actualFilter = defaultFilter
         }
     }
 
+
     /**
-     * Recoge la lista del json recogido en el activity luego de filtarla
+     * Recoge la lista del json recogido en el activity luego de filtrarla
      */
-    fun getList(desde: LocalDate?,
-                hasta: LocalDate?,
-                importe: Double,
-                estado:BooleanArray?){
-        val filter = FilterFactura()
-        filter.filter(lista,JsonToFactura.parseToList(json),desde, hasta, importe, estado)
+    fun getList() {
+        this.actualFilter.filter(liveData, listFactura)
     }
 
+    fun setFilter(filtro: InvoiceFilter) {
+        this.actualFilter = filtro
+    }
 
 
 }

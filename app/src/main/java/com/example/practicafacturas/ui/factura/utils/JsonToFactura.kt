@@ -31,29 +31,44 @@ class JsonToFactura() {
                             2,
                             RoundingMode.HALF_EVEN
                         ).toDouble(),
-                        dateParser(it.asJsonObject.get("fecha").toString().substring(1,it.asJsonObject.get("fecha").toString().length-1))
+                        dateParser(
+                            it.asJsonObject.get("fecha").toString()
+                                .substring(1, it.asJsonObject.get("fecha").toString().length - 1)
+                        )
 
                     )
                 )
             }
             Log.d("json", "Lista: $mutableList")
+            mutableList.sortedBy {
+                it.fecha
+            }
             return mutableList
         }
+
+
+      fun getMaxImporte(list : List<Factura>): Double {
+          list.sortedBy {
+              it.importeOrdenacion
+          }
+          return list.last().importeOrdenacion
+      }
+
         /**
-         * Recoge las fechas del json (07/02/2021) y lo convierte a (07 Feb. 2021)
+         * Recoge las fechas del json (07/02/2021) y lo convierte a
          */
         fun dateParser(dateJson: String): LocalDate {
-            val initialFormat  =   DateTimeFormatter.ofPattern("dd/MM/yyyy")
-            return LocalDate.parse(dateJson,initialFormat)
+            val initialFormat = DateTimeFormatter.ofPattern("dd/MM/yyyy")
+            return LocalDate.parse(dateJson, initialFormat)
         }
 
         /**
          * Recoge las fechas del json (07/02/2021) y lo convierte a (07 Feb. 2021)
          */
         fun dateParserPrint(dateJson: String): String {
-            val initialFormat  =   DateTimeFormatter.ofPattern("yyyy-MM-dd")
+            val initialFormat = DateTimeFormatter.ofPattern("yyyy-MM-dd")
             val finalFormat = DateTimeFormatter.ofPattern("dd MMM yyyy")
-            val date = LocalDate.parse(dateJson,initialFormat)
+            val date = LocalDate.parse(dateJson, initialFormat)
             return date.format(finalFormat)
         }
     }

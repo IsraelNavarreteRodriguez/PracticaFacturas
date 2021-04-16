@@ -2,8 +2,6 @@ package com.example.practicafacturas.ui.factura.fragment
 
 import android.os.Bundle
 import android.view.*
-import android.widget.LinearLayout
-import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -15,7 +13,6 @@ import com.example.practicafacturas.data.model.Factura
 import com.example.practicafacturas.databinding.FragmentListfacturasBinding
 import com.example.practicafacturas.ui.adapter.FacturaAdapter
 import com.example.practicafacturas.ui.factura.utils.HeaderDecoration
-import com.example.practicafacturas.ui.factura.utils.JsonToFactura
 import com.example.practicafacturas.ui.factura.utils.SpacingItemDecorator
 import com.example.practicafacturas.ui.factura.viewmodel.FacturaViewModel
 import java.time.LocalDate
@@ -24,15 +21,21 @@ import java.time.LocalDate
  * A simple [Fragment] subclass as the default destination in the navigation.
  */
 class ListFacturasFragment : Fragment() {
-    private lateinit var llLoading: LinearLayout
     private lateinit var binding: FragmentListfacturasBinding
     private lateinit var adapter: FacturaAdapter
-    private lateinit var bundle: Bundle
     private lateinit var facturaViewModel: FacturaViewModel
     private var desde: LocalDate? = null
     private var hasta: LocalDate? = null
     private lateinit var estado: BooleanArray
     private var importe = 0.0
+
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        facturaViewModel = ViewModelProvider(this).get(FacturaViewModel::class.java)
+        facturaViewModel.downloadJson()
+
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -40,13 +43,8 @@ class ListFacturasFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         setHasOptionsMenu(true)
-        if (arguments != null) {
-            bundle = arguments as Bundle
-            getFilters(bundle)
-        }
-        facturaViewModel = ViewModelProvider(this).get(FacturaViewModel::class.java)
         binding =
-            DataBindingUtil.inflate(inflater, R.layout.fragment_listfacturas, container, false)
+            FragmentListfacturasBinding.inflate(inflater,container,false)
         return binding.root
     }
 
@@ -59,10 +57,8 @@ class ListFacturasFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        llLoading = view.findViewById(R.id.llLoading)
         showProgress()
-        facturaViewModel.getList(desde, hasta, importe, estado)
-        facturaViewModel.lista.observe(viewLifecycleOwner, Observer {
+        facturaViewModel.liveData.observe(viewLifecycleOwner, Observer {
             initializeRecycler(it)
             if (it.isEmpty())
                 noData()
@@ -71,12 +67,13 @@ class ListFacturasFragment : Fragment() {
             hideProgress()
         })
 
+
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (item.itemId == R.id.action_filter)
             view?.findNavController()
-                ?.navigate(R.id.action_listFacturaFragment_to_facturaFiltroFragment,bundle)
+                ?.navigate(R.id.action_listFacturaFragment_to_facturaFiltroFragment)
         return super.onOptionsItemSelected(item)
     }
 
@@ -101,31 +98,19 @@ class ListFacturasFragment : Fragment() {
             binding.rvFacturas.addItemDecoration(HeaderDecoration(requireContext(),binding.rvFacturas,R.layout.item_header))
         }
     }
-    /**
-     * Recoge el contenido del bundle desde FacturaFiltroFragment
-     */
-    private fun getFilters(bundle: Bundle) {
-        if (bundle.get("desde").toString() != "dia/mes/año" || bundle.get("hasta")
-                .toString() != "dia/mes/año"
-        ) {
-            desde = JsonToFactura.dateParser(bundle.get("desde").toString())
-            hasta = JsonToFactura.dateParser(bundle.get("hasta").toString())
-        }
-        estado = bundle.getBooleanArray("estado")!!
-        importe = bundle.getFloat("importe").toDouble()
-    }
+
     /**
      * Muestra el layout de carga mientras descarga y filtra los datos
      */
     private fun showProgress() {
-        llLoading.visibility = View.VISIBLE
+        binding.llLoading.llLoading.visibility = View.VISIBLE
     }
 
     /**
      * Oculta el layout de carga
      */
     private fun hideProgress() {
-        llLoading.visibility = View.GONE
+        binding.llLoading.llLoading.visibility = View.GONE
     }
 
     /**

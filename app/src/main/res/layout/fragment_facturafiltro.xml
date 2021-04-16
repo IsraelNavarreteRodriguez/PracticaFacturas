@@ -1,166 +1,158 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
+
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ui.factura.fragment.FacturaFiltroFragment">
 
-    <data>
 
-        <variable
-            name="FacturaFiltroFragment"
-            type="com.example.practicafacturas.ui.factura.fragment.FacturaFiltroFragment" />
-    </data>
+    <TextView
+        android:id="@+id/tvFiltroFacturas"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/tvFiltroFacturas"
+        android:textColor="@color/black"
+        android:textSize="40sp" />
+
+    <TextView
+        android:id="@+id/tvFechaDeAdmision"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:text="@string/tvFechaDeAdmision"
+        android:textColor="@color/black" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tvDesde"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/tvDesde"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/btDesde"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/gray"
+            android:text="@string/btFecha"
+            app:layout_constraintStart_toStartOf="@+id/tvDesde"
+            app:layout_constraintTop_toBottomOf="@+id/tvDesde" />
+
+        <TextView
+            android:id="@+id/tvHasta"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/tvHasta"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/tvDesde"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/btHasta"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/gray"
+            android:text="@string/btFecha"
+            app:layout_constraintStart_toStartOf="@+id/tvHasta"
+            app:layout_constraintTop_toBottomOf="@+id/tvHasta" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="15dp"
+        android:background="@color/black" />
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        tools:context=".ui.factura.fragment.FacturaFiltroFragment">
-
-
-        <TextView
-            android:id="@+id/tvFiltroFacturas"
-            android:layout_width="wrap_content"
-            android:textColor="@color/black"
-            android:textSize="40sp"
-            android:layout_height="wrap_content"
-            android:text="@string/tvFiltroFacturas" />
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="15dp"
+        android:orientation="vertical">
 
         <TextView
-            android:id="@+id/tvFechaDeAdmision"
+            android:id="@+id/tvImporte"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="10dp"
-            android:text="@string/tvFechaDeAdmision"
+            android:layout_weight="0"
+            android:text="@string/tvImporte"
             android:textColor="@color/black" />
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <com.google.android.material.slider.Slider
+            android:id="@+id/sldImporte"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="10dp"
-            android:orientation="horizontal">
-
-            <TextView
-                android:id="@+id/tvDesde"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/tvDesde"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <Button
-                android:id="@+id/btDesde"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:backgroundTint="@color/gray"
-                android:text="@string/btFecha"
-                app:layout_constraintStart_toStartOf="@+id/tvDesde"
-                app:layout_constraintTop_toBottomOf="@+id/tvDesde" />
-
-            <TextView
-                android:id="@+id/tvHasta"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/tvHasta"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/tvDesde"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <Button
-                android:id="@+id/btHasta"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:backgroundTint="@color/gray"
-                android:text="@string/btFecha"
-                app:layout_constraintStart_toStartOf="@+id/tvHasta"
-                app:layout_constraintTop_toBottomOf="@+id/tvHasta" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginTop="15dp"
-            android:background="@color/black" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="15dp"
-            android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/tvImporte"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="0"
-                android:text="@string/tvImporte"
-                android:textColor="@color/black" />
-
-            <com.google.android.material.slider.Slider
-                android:id="@+id/sldImporte"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:valueFrom="0"
-                android:valueTo="100" />
-        </LinearLayout>
-
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginTop="15dp"
-            android:background="@color/black" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="15dp"
-            android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/tvPorEstado"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/tvPorEstado"
-                android:textColor="@color/black" />
-
-            <CheckBox
-                android:id="@+id/chkPagada"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/chkPagada" />
-
-            <CheckBox
-                android:id="@+id/chkPendiente"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/chkPendiente" />
-        </LinearLayout>
-
-
-        <Button
-            android:id="@+id/btFilter"
-            android:layout_marginTop="15dp"
-            android:layout_width="match_parent"
-            android:backgroundTint="@color/green"
-            android:layout_height="wrap_content"
-            android:text="@string/btFilter" />
-        <Button
-            android:id="@+id/btEliminateFilter"
-            android:layout_width="match_parent"
-            android:textColor="@color/gray"
-            style="@style/Widget.AppCompat.Button.Borderless"
-            android:layout_height="wrap_content"
-            android:text="@string/btEliminateFilter" />
-
-        <include
-            layout="@layout/layout_loading"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:valueFrom="0"
+            android:valueTo="100" />
     </LinearLayout>
 
-</layout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="15dp"
+        android:background="@color/black" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="15dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tvPorEstado"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/tvPorEstado"
+            android:textColor="@color/black" />
+
+        <CheckBox
+            android:id="@+id/chkPagada"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/chkPagada" />
+
+        <CheckBox
+            android:id="@+id/chkPendiente"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/chkPendiente" />
+    </LinearLayout>
+
+
+    <Button
+        android:id="@+id/btFilter"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:backgroundTint="@color/green"
+        android:text="@string/btFilter" />
+
+    <Button
+        android:id="@+id/btEliminateFilter"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/btEliminateFilter"
+        android:textColor="@color/gray" />
+
+    <include
+        layout="@layout/layout_loading"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+</LinearLayout>

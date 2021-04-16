@@ -6,7 +6,6 @@ import android.view.*
 import android.widget.Button
 import android.widget.CheckBox
 import android.widget.Toast
-import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
@@ -14,6 +13,7 @@ import com.example.practicafacturas.R
 import com.example.practicafacturas.databinding.FragmentFacturafiltroBinding
 import com.example.practicafacturas.ui.factura.utils.JsonToFactura
 import com.example.practicafacturas.ui.factura.viewmodel.FacturaViewModel
+import com.example.practicafacturas.ui.factura.viewmodel.InvoiceFilter
 import com.google.android.material.slider.Slider
 import java.util.*
 
@@ -23,14 +23,13 @@ import java.util.*
 class FacturaFiltroFragment : Fragment() {
     lateinit var facturaViewModel: FacturaViewModel
     private lateinit var binding: FragmentFacturafiltroBinding
-    private lateinit var bundle: Bundle
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         setHasOptionsMenu(true)
         facturaViewModel = ViewModelProvider(this).get(FacturaViewModel::class.java)
-        binding =            DataBindingUtil.inflate(inflater, R.layout.fragment_facturafiltro, container, false)
+        binding = FragmentFacturafiltroBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -44,10 +43,12 @@ class FacturaFiltroFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        if (arguments != null) {
-            bundle = arguments as Bundle
-            getFilters(bundle)
-        }
+        binding.btDesde.text = facturaViewModel.actualFilter.desde.toString()
+        binding.btHasta.text = facturaViewModel.actualFilter.hasta.toString()
+        binding.sldImporte.value = facturaViewModel.actualFilter.importe.toFloat()
+        binding.chkPagada.isChecked = facturaViewModel.actualFilter.pagado
+        binding.chkPendiente.isChecked = facturaViewModel.actualFilter.pendiente
+
         binding.btDesde.setOnClickListener {
             setDatePicker(binding.btDesde)
         }
@@ -55,14 +56,35 @@ class FacturaFiltroFragment : Fragment() {
             setDatePicker(binding.btHasta)
         }
         binding.btFilter.setOnClickListener {
-            val bundle = Bundle()
-            putBundle(bundle)
-            if (checkDates(binding.btHasta.text.toString(), binding.btDesde.text.toString()))
-                view.findNavController()
-                    .navigate(R.id.action_facturaFiltroFragment_to_listFacturaFragment, bundle)
-            else
-                Toast.makeText(requireContext(), "La fechas deben ser validas", Toast.LENGTH_SHORT)
-                    .show()
+
+            with(binding) {
+                val strDesde =
+                    correctDate(btDesde.text.toString())
+                val strHasta =
+                    correctDate(btHasta.text.toString())
+                if (checkDates(strHasta, strDesde)) {
+                    val desde = JsonToFactura.dateParser(btDesde.text.toString())
+                    val hasta = JsonToFactura.dateParser(btHasta.text.toString())
+                    facturaViewModel.setFilter(
+                        InvoiceFilter(
+                            desde,
+                            hasta,
+                            sldImporte.value.toDouble(),
+                            chkPagada.isChecked,
+                            chkPendiente.isChecked
+                        )
+                    )
+                    view.findNavController()
+                        .navigate(R.id.action_facturaFiltroFragment_to_listFacturaFragment)
+                } else
+                    Toast.makeText(
+                        requireContext(),
+                        "La fechas deben ser validas",
+                        Toast.LENGTH_SHORT
+                    )
+                        .show()
+            }
+
         }
         binding.btEliminateFilter.setOnClickListener {
             eliminateFilters(
@@ -75,14 +97,17 @@ class FacturaFiltroFragment : Fragment() {
         }
     }
 
+    private fun correctDate(strDate: String): String? {
+        if (strDate == "dia/mes/año")
+            return null
+        return strDate
+    }
 
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (item.itemId == R.id.action_cancel) {
-            val bundle  = Bundle()
-            putBundle(bundle)
             view?.findNavController()
-                ?.navigate(R.id.action_facturaFiltroFragment_to_listFacturaFragment,bundle)
+                ?.navigate(R.id.action_facturaFiltroFragment_to_listFacturaFragment)
         }
         return super.onOptionsItemSelected(item)
     }
@@ -93,33 +118,14 @@ class FacturaFiltroFragment : Fragment() {
      * Ambas deben de ser o nulas (dia/mes/año) o validas
      * Si ambas son validas hasta debe ser despues de desde (07/05/2021) > (06/05/2021)
      */
-    private fun checkDates(hasta: String, desde: String): Boolean {
-        if (hasta != "dia/mes/año" && desde != "dia/mes/año")
+    private fun checkDates(hasta: String?, desde: String?): Boolean {
+        if (hasta != null && desde != null)
             return JsonToFactura.dateParser(hasta).isAfter(JsonToFactura.dateParser(desde))
-        if (hasta == "dia/mes/año" && desde == "dia/mes/año")
+        if (hasta == null && desde == null)
             return true
         return false
     }
 
-    /**
-     * Introduce los valores de los filtros en un bundle y los pasa al fragment de ListFacturas
-     */
-    private fun putBundle(bundle: Bundle) {
-        bundle.putString("desde", binding.btDesde.text.toString())
-        bundle.putString("hasta", binding.btHasta.text.toString())
-        bundle.putBooleanArray("estado", getEstado())
-        bundle.putFloat("importe", binding.sldImporte.value)
-    }
-
-    /**
-     * Crea el array de estados para pasarlo por el bundle
-     */
-    private fun getEstado(): BooleanArray? {
-        val result = mutableListOf<Boolean>()
-        result.add(binding.chkPagada.isChecked)
-        result.add(binding.chkPendiente.isChecked)
-        return result.toBooleanArray()
-    }
 
     /**
      * Elimina los filtros seleccionados (los pone por defecto)
@@ -170,33 +176,17 @@ class FacturaFiltroFragment : Fragment() {
     ) {
         if (dayOfMonth.toString().length == 1)
             if (month.toString().length == 1)
-                button.text = "0$dayOfMonth/0$month/$year"
+                button.text = "0$dayOfMonth/0${month + 1}/$year"
             else
-                button.text = "$dayOfMonth/0$month/$year"
+                button.text = "$dayOfMonth/0${month + 1}/$year"
         else
             if (month.toString().length == 1)
-                button.text = "$dayOfMonth/0$month/$year"
+                button.text = "$dayOfMonth/0${month + 1}/$year"
             else
-                button.text = "$dayOfMonth/0$month/$year"
+                button.text = "$dayOfMonth/${month + 1}/$year"
 
-        if (month.toString().length != 1 && dayOfMonth.toString().length != 1)
-            button.text = "$dayOfMonth/$month/$year"
     }
 
-    /**
-     * Recoge los filtros mandados por el bundle desde ListFacturaFragments
-     */
-    private fun getFilters(bundle: Bundle) {
-        if (bundle.get("desde").toString() != "dia/mes/año" || bundle.get("hasta")
-                .toString() != "dia/mes/año"
-        ) {
-            binding.btDesde.text = bundle.get("desde").toString()
-            binding.btHasta.text = bundle.get("hasta").toString()
-        }
-        val estados = bundle.getBooleanArray("estado")!!
-        binding.chkPagada.isChecked = estados[0]
-        binding.chkPendiente.isChecked = estados[1]
-        binding.sldImporte.value = bundle.getFloat("importe")
-    }
+
     //endregion
 }

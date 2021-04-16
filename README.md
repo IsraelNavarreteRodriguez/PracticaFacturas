@@ -65,3 +65,19 @@ Completado todos los requisitos de la aplicacion
 
 Comprobar aplicacion con Juan
 
+16/04/2021
+
+---------------------HECHO--------------------------------
+
+Comprobada aplicacion con Juan
+
+-------------------TODO----------------------------------
+
+Cambiar minimo y maximo fecha
+
+Cambiar maximo slider
+
+Hacer que el filtro funcione
+
+Cambiar apariencia
+
