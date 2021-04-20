@@ -28,8 +28,8 @@ class SpacingItemDecorator(verticalSpaceHeight : Int, context : Context) :
      */
     override fun onDrawOver(c: Canvas, parent: RecyclerView, state: RecyclerView.State) {
         super.onDrawOver(c, parent, state)
-        val left = parent.paddingLeft
-        val right = parent.width - parent.paddingRight
+        val left = parent.paddingLeft + 30
+        val right = parent.width - parent.paddingRight -30
 
         val childCount = parent.childCount
         for (i in 0 until childCount) {

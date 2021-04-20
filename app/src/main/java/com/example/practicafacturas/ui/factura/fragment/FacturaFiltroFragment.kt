@@ -57,7 +57,7 @@ class FacturaFiltroFragment : Fragment() {
             with(binding) {
                 val desde = JsonToFactura.dateParser(btDesde.text.toString())
                 val hasta = JsonToFactura.dateParser(btHasta.text.toString())
-                if (desde.isBefore(hasta)){
+                if (desde.isBefore(hasta)) {
                     facturaViewModel.setFilter(
                         InvoiceFilter(
                             desde,
@@ -69,9 +69,12 @@ class FacturaFiltroFragment : Fragment() {
                     )
                     view.findNavController()
                         .navigate(R.id.action_facturaFiltroFragment_to_listFacturaFragment)
-                }
-                else
-                    Toast.makeText(requireContext(),"Las fechas deben de ser validas",Toast.LENGTH_SHORT).show()
+                } else
+                    Toast.makeText(
+                        requireContext(),
+                        "Las fechas deben de ser validas",
+                        Toast.LENGTH_SHORT
+                    ).show()
             }
 
         }
@@ -104,7 +107,10 @@ class FacturaFiltroFragment : Fragment() {
             btHasta.text =
                 JsonToFactura.dateParseButton(facturaViewModel.actualFilter.hasta.toString())
             sldImporte.valueFrom = facturaViewModel.getMinImporte()
-            sldImporte.value = facturaViewModel.defaultFilter.importe
+            if (facturaViewModel.actualFilter.importe != facturaViewModel.defaultFilter.importe)
+                sldImporte.value = facturaViewModel.actualFilter.importe
+            else
+                sldImporte.value = facturaViewModel.defaultFilter.importe
             sldImporte.valueTo = facturaViewModel.defaultFilter.importe
             chkPagada.isChecked = facturaViewModel.actualFilter.pagado
             chkPendiente.isChecked = facturaViewModel.actualFilter.pendiente
@@ -178,12 +184,12 @@ class FacturaFiltroFragment : Fragment() {
         year: Int
     ) {
         if (dayOfMonth.toString().length == 1)
-            if ((month+1).toString().length == 1)
+            if ((month + 1).toString().length == 1)
                 button.text = "0$dayOfMonth/0${month + 1}/$year"
             else
                 button.text = "$dayOfMonth/${month + 1}/$year"
         else
-            if ((month+1).toString().length == 1)
+            if ((month + 1).toString().length == 1)
                 button.text = "$dayOfMonth/0${month + 1}/$year"
             else
                 button.text = "$dayOfMonth/${month + 1}/$year"

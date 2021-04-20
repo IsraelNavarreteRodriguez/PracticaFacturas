@@ -43,7 +43,10 @@ data class InvoiceFilter(
      */
     private fun checkFecha(it: Factura): Boolean {
         return if (desde != null && hasta != null)
-            it.fecha.isBefore(hasta) && it.fecha.isAfter(desde)
+            if (it.fecha == hasta || it.fecha == desde)
+                true
+            else
+                it.fecha.isBefore(hasta) && it.fecha.isAfter(desde)
         else
             true
     }
