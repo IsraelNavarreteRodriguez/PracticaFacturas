@@ -15,6 +15,7 @@ import com.example.practicafacturas.ui.factura.utils.JsonToFactura
 import com.example.practicafacturas.ui.factura.viewmodel.FacturaViewModel
 import com.example.practicafacturas.ui.factura.viewmodel.InvoiceFilter
 import com.google.android.material.slider.Slider
+import java.time.ZoneId
 import java.util.*
 
 /**
@@ -28,7 +29,9 @@ class FacturaFiltroFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         setHasOptionsMenu(true)
-        facturaViewModel = ViewModelProvider(this).get(FacturaViewModel::class.java)
+        facturaViewModel = activity?.run {
+            ViewModelProvider(this).get(FacturaViewModel::class.java)
+        } ?: throw Exception("Invalid Activity")
         binding = FragmentFacturafiltroBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -42,13 +45,7 @@ class FacturaFiltroFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        binding.btDesde.text = facturaViewModel.actualFilter.desde.toString()
-        binding.btHasta.text = facturaViewModel.actualFilter.hasta.toString()
-        binding.sldImporte.value = facturaViewModel.actualFilter.importe.toFloat()
-        binding.chkPagada.isChecked = facturaViewModel.actualFilter.pagado
-        binding.chkPendiente.isChecked = facturaViewModel.actualFilter.pendiente
-
+        setParams()
         binding.btDesde.setOnClickListener {
             setDatePicker(binding.btDesde)
         }
@@ -58,31 +55,23 @@ class FacturaFiltroFragment : Fragment() {
         binding.btFilter.setOnClickListener {
 
             with(binding) {
-                val strDesde =
-                    correctDate(btDesde.text.toString())
-                val strHasta =
-                    correctDate(btHasta.text.toString())
-                if (checkDates(strHasta, strDesde)) {
-                    val desde = JsonToFactura.dateParser(btDesde.text.toString())
-                    val hasta = JsonToFactura.dateParser(btHasta.text.toString())
+                val desde = JsonToFactura.dateParser(btDesde.text.toString())
+                val hasta = JsonToFactura.dateParser(btHasta.text.toString())
+                if (desde.isBefore(hasta)){
                     facturaViewModel.setFilter(
                         InvoiceFilter(
                             desde,
                             hasta,
-                            sldImporte.value.toDouble(),
+                            sldImporte.value,
                             chkPagada.isChecked,
                             chkPendiente.isChecked
                         )
                     )
                     view.findNavController()
                         .navigate(R.id.action_facturaFiltroFragment_to_listFacturaFragment)
-                } else
-                    Toast.makeText(
-                        requireContext(),
-                        "La fechas deben ser validas",
-                        Toast.LENGTH_SHORT
-                    )
-                        .show()
+                }
+                else
+                    Toast.makeText(requireContext(),"Las fechas deben de ser validas",Toast.LENGTH_SHORT).show()
             }
 
         }
@@ -97,12 +86,6 @@ class FacturaFiltroFragment : Fragment() {
         }
     }
 
-    private fun correctDate(strDate: String): String? {
-        if (strDate == "dia/mes/año")
-            return null
-        return strDate
-    }
-
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (item.itemId == R.id.action_cancel) {
@@ -113,17 +96,19 @@ class FacturaFiltroFragment : Fragment() {
     }
 
     //region Methods
-    /**
-     * Comprueba que las fechas sean ambas validas
-     * Ambas deben de ser o nulas (dia/mes/año) o validas
-     * Si ambas son validas hasta debe ser despues de desde (07/05/2021) > (06/05/2021)
-     */
-    private fun checkDates(hasta: String?, desde: String?): Boolean {
-        if (hasta != null && desde != null)
-            return JsonToFactura.dateParser(hasta).isAfter(JsonToFactura.dateParser(desde))
-        if (hasta == null && desde == null)
-            return true
-        return false
+
+    private fun setParams() {
+        with(binding) {
+            btDesde.text =
+                JsonToFactura.dateParseButton(facturaViewModel.actualFilter.desde.toString())
+            btHasta.text =
+                JsonToFactura.dateParseButton(facturaViewModel.actualFilter.hasta.toString())
+            sldImporte.valueFrom = facturaViewModel.getMinImporte()
+            sldImporte.value = facturaViewModel.defaultFilter.importe
+            sldImporte.valueTo = facturaViewModel.defaultFilter.importe
+            chkPagada.isChecked = facturaViewModel.actualFilter.pagado
+            chkPendiente.isChecked = facturaViewModel.actualFilter.pendiente
+        }
     }
 
 
@@ -137,11 +122,15 @@ class FacturaFiltroFragment : Fragment() {
         chkPendiente: CheckBox,
         sldImporte: Slider
     ) {
-        btHasta.text = "dia/mes/año"
-        btDesde.text = "dia/mes/año"
-        chkPagada.isChecked = false
-        chkPendiente.isChecked = false
-        sldImporte.value = 0.0F
+        btDesde.text =
+            JsonToFactura.dateParseButton(facturaViewModel.defaultFilter.desde.toString())
+        btHasta.text =
+            JsonToFactura.dateParseButton(facturaViewModel.defaultFilter.hasta.toString())
+        sldImporte.valueFrom = facturaViewModel.getMinImporte()
+        sldImporte.value = facturaViewModel.defaultFilter.importe
+        sldImporte.valueTo = facturaViewModel.defaultFilter.importe
+        chkPagada.isChecked = facturaViewModel.defaultFilter.pagado
+        chkPendiente.isChecked = facturaViewModel.defaultFilter.pendiente
     }
 
     /**
@@ -161,8 +150,22 @@ class FacturaFiltroFragment : Fragment() {
             month,
             day
         )
+        setDatePickerMinAndMaxValue(datePickerDialog)
         datePickerDialog.show()
 
+    }
+
+    private fun setDatePickerMinAndMaxValue(datePickerDialog: DatePickerDialog) {
+        var min = facturaViewModel.defaultFilter.desde!!.atStartOfDay(
+            ZoneId.systemDefault()
+        ).toInstant().toEpochMilli()
+        var max = facturaViewModel.defaultFilter.hasta!!.atStartOfDay(
+            ZoneId.systemDefault()
+        ).toInstant().toEpochMilli()
+
+        datePickerDialog.datePicker.minDate = min
+
+        datePickerDialog.datePicker.maxDate = max
     }
 
     /**
@@ -175,12 +178,12 @@ class FacturaFiltroFragment : Fragment() {
         year: Int
     ) {
         if (dayOfMonth.toString().length == 1)
-            if (month.toString().length == 1)
+            if ((month+1).toString().length == 1)
                 button.text = "0$dayOfMonth/0${month + 1}/$year"
             else
-                button.text = "$dayOfMonth/0${month + 1}/$year"
+                button.text = "$dayOfMonth/${month + 1}/$year"
         else
-            if (month.toString().length == 1)
+            if ((month+1).toString().length == 1)
                 button.text = "$dayOfMonth/0${month + 1}/$year"
             else
                 button.text = "$dayOfMonth/${month + 1}/$year"

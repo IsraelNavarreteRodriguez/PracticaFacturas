@@ -30,7 +30,7 @@ class JsonToFactura() {
                         BigDecimal(it.asJsonObject.get("importeOrdenacion").asDouble).setScale(
                             2,
                             RoundingMode.HALF_EVEN
-                        ).toDouble(),
+                        ).toFloat(),
                         dateParser(
                             it.asJsonObject.get("fecha").toString()
                                 .substring(1, it.asJsonObject.get("fecha").toString().length - 1)
@@ -40,22 +40,22 @@ class JsonToFactura() {
                 )
             }
             Log.d("json", "Lista: $mutableList")
-            mutableList.sortedBy {
+            return mutableList.sortedByDescending {
                 it.fecha
             }
-            return mutableList
+
         }
 
 
-      fun getMaxImporte(list : List<Factura>): Double {
-          list.sortedBy {
-              it.importeOrdenacion
-          }
-          return list.last().importeOrdenacion
-      }
+        fun getMaxImporte(list: List<Factura>): Float {
+            val newList = list.sortedBy {
+                it.importeOrdenacion
+            }
+            return newList.last().importeOrdenacion
+        }
 
         /**
-         * Recoge las fechas del json (07/02/2021) y lo convierte a
+         * Recoge las fechas del json (07/02/2021) y lo convierte a (2021-02-07)
          */
         fun dateParser(dateJson: String): LocalDate {
             val initialFormat = DateTimeFormatter.ofPattern("dd/MM/yyyy")
@@ -70,6 +70,20 @@ class JsonToFactura() {
             val finalFormat = DateTimeFormatter.ofPattern("dd MMM yyyy")
             val date = LocalDate.parse(dateJson, initialFormat)
             return date.format(finalFormat)
+        }
+
+        fun dateParseButton(dateJson: String): String {
+            val initialFormat = DateTimeFormatter.ofPattern("yyyy-MM-dd")
+            val finalFormat = DateTimeFormatter.ofPattern("dd/MM/yyyy")
+            val date = LocalDate.parse(dateJson, initialFormat)
+            return date.format(finalFormat)
+        }
+
+        fun getMinImporte(listFactura: List<Factura>): Float {
+            val newList = listFactura.sortedBy {
+                it.importeOrdenacion
+            }
+            return newList.first().importeOrdenacion
         }
     }
 

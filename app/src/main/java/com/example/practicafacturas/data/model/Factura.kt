@@ -5,4 +5,4 @@ import java.time.LocalDate
 /**
  * Es la clase modelo de factura
  */
-data class Factura(val descEstado : String, val importeOrdenacion : Double,val fecha : LocalDate)
+data class Factura(val descEstado : String, val importeOrdenacion : Float,val fecha : LocalDate)

@@ -8,6 +8,7 @@ import com.example.practicafacturas.ui.factura.viewmodel.FacturaViewModel
 
 class MainActivity : AppCompatActivity() {
 
+    private lateinit var facturaViewModel: FacturaViewModel
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)

@@ -11,23 +11,23 @@ import com.example.practicafacturas.ui.factura.utils.JsonToFactura
  */
 class FacturaViewModel : ViewModel() {
 
-    val liveData: MutableLiveData<List<Factura>> = MutableLiveData()
-    var actualFilter = InvoiceFilter()
+    val liveDataFactura: MutableLiveData<List<Factura>> = MutableLiveData()
+    lateinit var actualFilter : InvoiceFilter
     lateinit var defaultFilter: InvoiceFilter
     private val service = DownloadService()
-    var listFactura: List<Factura> = listOf()
+    private var listFactura: List<Factura> = listOf()
 
     /**
      * Descarga el json y lo guarda
      */
     fun downloadJson() {
-        if (listFactura.isNullOrEmpty()) {
+        if (listFactura.isEmpty()) {
             val jsonFactura = service.returnJsonArray()
             listFactura = JsonToFactura.parseToList(jsonFactura)
-            liveData.postValue(listFactura)
+            liveDataFactura.postValue(listFactura)
             defaultFilter = InvoiceFilter(
-                listFactura.first().fecha,
                 listFactura.last().fecha,
+                listFactura.first().fecha,
                 JsonToFactura.getMaxImporte(listFactura)
             )
             this.actualFilter = defaultFilter
@@ -39,11 +39,17 @@ class FacturaViewModel : ViewModel() {
      * Recoge la lista del json recogido en el activity luego de filtrarla
      */
     fun getList() {
-        this.actualFilter.filter(liveData, listFactura)
+        this.actualFilter.filter(liveDataFactura, listFactura)
     }
+
+    fun getMinImporte() : Float{
+        return JsonToFactura.getMinImporte(listFactura)
+    }
+
 
     fun setFilter(filtro: InvoiceFilter) {
         this.actualFilter = filtro
+        getList()
     }
 
 

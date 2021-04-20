@@ -47,7 +47,9 @@
             android:id="@+id/btDesde"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textColor="@color/black"
             android:backgroundTint="@color/gray"
+            style="@style/Theme.PracticaFacturas.Graybutton"
             android:text="@string/btFecha"
             app:layout_constraintStart_toStartOf="@+id/tvDesde"
             app:layout_constraintTop_toBottomOf="@+id/tvDesde" />
@@ -63,9 +65,11 @@
 
         <Button
             android:id="@+id/btHasta"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:backgroundTint="@color/gray"
+            android:layout_width="wrap_content"
+            android:textColor="@color/black"
+            style="@style/Theme.PracticaFacturas.Graybutton"
+            android:layout_height="wrap_content"
             android:text="@string/btFecha"
             app:layout_constraintStart_toStartOf="@+id/tvHasta"
             app:layout_constraintTop_toBottomOf="@+id/tvHasta" />
@@ -75,7 +79,7 @@
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_marginTop="15dp"
-        android:background="@color/black" />
+        android:background="@color/gray" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -94,10 +98,11 @@
 
         <com.google.android.material.slider.Slider
             android:id="@+id/sldImporte"
+            style="@style/Widget.App.Slider"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:valueFrom="0"
-            android:valueTo="100" />
+            android:valueTo="100"
+            android:valueFrom="0F" />
     </LinearLayout>
 
 
@@ -105,7 +110,7 @@
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_marginTop="15dp"
-        android:background="@color/black" />
+        android:background="@color/gray" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -137,16 +142,19 @@
 
     <Button
         android:id="@+id/btFilter"
-        android:layout_width="match_parent"
+        style="@style/Theme.PracticaFacturas.Greenbutton"
+        android:backgroundTint="@color/green"
+        android:layout_width="200dp"
+        android:layout_gravity="center"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
-        android:backgroundTint="@color/green"
         android:text="@string/btFilter" />
 
     <Button
         android:id="@+id/btEliminateFilter"
         style="@style/Widget.AppCompat.Button.Borderless"
         android:layout_width="match_parent"
+        android:layout_marginTop="10dp"
         android:layout_height="wrap_content"
         android:text="@string/btEliminateFilter"
         android:textColor="@color/gray" />

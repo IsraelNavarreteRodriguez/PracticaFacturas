@@ -15,7 +15,6 @@ import com.example.practicafacturas.ui.adapter.FacturaAdapter
 import com.example.practicafacturas.ui.factura.utils.HeaderDecoration
 import com.example.practicafacturas.ui.factura.utils.SpacingItemDecorator
 import com.example.practicafacturas.ui.factura.viewmodel.FacturaViewModel
-import java.time.LocalDate
 
 /**
  * A simple [Fragment] subclass as the default destination in the navigation.
@@ -24,15 +23,13 @@ class ListFacturasFragment : Fragment() {
     private lateinit var binding: FragmentListfacturasBinding
     private lateinit var adapter: FacturaAdapter
     private lateinit var facturaViewModel: FacturaViewModel
-    private var desde: LocalDate? = null
-    private var hasta: LocalDate? = null
-    private lateinit var estado: BooleanArray
-    private var importe = 0.0
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        facturaViewModel = ViewModelProvider(this).get(FacturaViewModel::class.java)
+        facturaViewModel = activity?.run {
+            ViewModelProvider(this).get(FacturaViewModel::class.java)
+        } ?: throw Exception("Invalid Activity")
         facturaViewModel.downloadJson()
 
     }
@@ -44,7 +41,7 @@ class ListFacturasFragment : Fragment() {
     ): View? {
         setHasOptionsMenu(true)
         binding =
-            FragmentListfacturasBinding.inflate(inflater,container,false)
+            FragmentListfacturasBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -58,7 +55,7 @@ class ListFacturasFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         showProgress()
-        facturaViewModel.liveData.observe(viewLifecycleOwner, Observer {
+        facturaViewModel.liveDataFactura.observe(viewLifecycleOwner, Observer {
             initializeRecycler(it)
             if (it.isEmpty())
                 noData()
@@ -89,13 +86,19 @@ class ListFacturasFragment : Fragment() {
                 context = requireContext(),
                 verticalSpaceHeight = 20
             )
-            adapter = FacturaAdapter(requireContext(),it)
+            adapter = FacturaAdapter(requireContext(), it)
             val layoutManager: RecyclerView.LayoutManager =
                 LinearLayoutManager(context, RecyclerView.VERTICAL, false)
             binding.rvFacturas.layoutManager = layoutManager
             binding.rvFacturas.adapter = adapter
             binding.rvFacturas.addItemDecoration(decoration)
-            binding.rvFacturas.addItemDecoration(HeaderDecoration(requireContext(),binding.rvFacturas,R.layout.item_header))
+            binding.rvFacturas.addItemDecoration(
+                HeaderDecoration(
+                    requireContext(),
+                    binding.rvFacturas,
+                    R.layout.item_header
+                )
+            )
         }
     }
 

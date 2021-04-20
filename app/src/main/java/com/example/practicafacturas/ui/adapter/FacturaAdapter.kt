@@ -14,12 +14,11 @@ import com.example.practicafacturas.ui.factura.utils.JsonToFactura
 /**
  * Es el adapter del RecyclerView de facturas
  */
-class FacturaAdapter(context : Context,list: List<Factura>) :
+class FacturaAdapter(context: Context, list: List<Factura>) :
     RecyclerView.Adapter<FacturaAdapter.ViewHolder>() {
 
     val context = context
     val list = list
-
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -33,7 +32,6 @@ class FacturaAdapter(context : Context,list: List<Factura>) :
     }
 
 
-
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bind(position)
     }
@@ -41,7 +39,7 @@ class FacturaAdapter(context : Context,list: List<Factura>) :
     /**
      * Es el viewholder del adapter del recyclerView
      */
-    inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
+    inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val tvFecha: TextView = itemView.findViewById(R.id.tvFecha)
         private val tvImporteOrdenacion: TextView = itemView.findViewById(R.id.tvImporteOrdenacion)
         private val tvDescEstado: TextView = itemView.findViewById(R.id.tvDescEstado)
@@ -52,10 +50,29 @@ class FacturaAdapter(context : Context,list: List<Factura>) :
         fun bind(position: Int) {
             tvFecha.text = JsonToFactura.dateParserPrint(list[position].fecha.toString())
             tvImporteOrdenacion.text = "${list[position].importeOrdenacion}€"
-            tvDescEstado.text = if (list[position].descEstado == "Pagada") "" else list[position].descEstado
-            itemView.setOnClickListener { Toast.makeText(context, "Fecha: ${tvFecha.text}\n" +
-                    "Estado: ${tvDescEstado.text}\n" +
-                    "Importe: ${tvImporteOrdenacion.text}", Toast.LENGTH_SHORT).show() }
+            tvDescEstado.text = checkEstado(position)
+            itemView.setOnClickListener {
+                Toast.makeText(
+                    context, "Fecha: ${tvFecha.text}\n" +
+                            "Estado: ${printEstado(tvDescEstado.text.toString())}\n" +
+                            "Importe: ${tvImporteOrdenacion.text}", Toast.LENGTH_SHORT
+                ).show()
+            }
+        }
+
+        private fun printEstado(param: String): String {
+            return if (param.isBlank())
+                "Pagada"
+            else
+                param
+        }
+
+        private fun checkEstado(position: Int): String {
+            return if (list[position].descEstado == "Pagada") {
+                tvDescEstado.visibility = View.GONE
+                ""
+            } else
+                list[position].descEstado
         }
     }
 

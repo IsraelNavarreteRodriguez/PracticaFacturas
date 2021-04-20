@@ -81,3 +81,19 @@ Hacer que el filtro funcione
 
 Cambiar apariencia
 
+19/04/2021
+
+---------------------HECHO--------------------------------
+
+Cambiar minimo y maximo fecha
+
+Cambiar maximo slider
+
+Hacer que el filtro funcione
+
+Cambiar apariencia
+
+-------------------TODO----------------------------------
+
+Arreglar recycler
+

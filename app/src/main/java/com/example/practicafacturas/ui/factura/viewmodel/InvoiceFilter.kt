@@ -7,7 +7,7 @@ import java.time.LocalDate
 data class InvoiceFilter(
     var desde: LocalDate? = null,
     var hasta: LocalDate? = null,
-    var importe: Double = 0.0,
+    var importe: Float = 0.0F,
     var pagado: Boolean = true,
     var pendiente: Boolean = true
 ) {
@@ -54,7 +54,10 @@ data class InvoiceFilter(
      * si ambos son verdaderos recoge todas las facturas
      */
     private fun checkEstado(it: Factura): Boolean {
-        return checkPagado(it) || checkPendiente(it)
+        return if ((pagado && pendiente) || (!pagado && !pendiente))
+            true
+        else
+            checkPagado(it) || checkPendiente(it)
     }
 
     fun checkPagado(it: Factura): Boolean {
