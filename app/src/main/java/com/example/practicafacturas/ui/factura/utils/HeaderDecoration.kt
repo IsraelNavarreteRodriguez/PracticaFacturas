@@ -24,7 +24,7 @@ class HeaderDecoration(context : Context,parent : RecyclerView , @LayoutRes resI
 
     override fun onDraw(c: Canvas, parent: RecyclerView, state: RecyclerView.State) {
         super.onDraw(c, parent, state)
-        mLayout.layout(parent.left, 0, parent.right, mLayout.getMeasuredHeight())
+        mLayout.layout(parent.left, 0, parent.right, mLayout.measuredHeight)
         for (i in 0 until parent.childCount) {
             val view: View = parent.getChildAt(i)
             if (parent.getChildAdapterPosition(view) == 0) {
@@ -46,7 +46,7 @@ class HeaderDecoration(context : Context,parent : RecyclerView , @LayoutRes resI
         state: RecyclerView.State
     ) {
         if (parent.getChildAdapterPosition(view) == 0) {
-            outRect.set(0, mLayout.measuredHeight, 0, 0)
+            outRect.set(0, mLayout.measuredHeight-20, 0, 0)
         } else {
             outRect.setEmpty()
         }

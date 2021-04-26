@@ -97,3 +97,13 @@ Cambiar apariencia
 
 Arreglar recycler
 
+26/04/2021
+
+---------------------HECHO--------------------------------
+
+Cambiado nombre de clases y métodos
+
+Cambiado aspecto de aplicación
+
+
+

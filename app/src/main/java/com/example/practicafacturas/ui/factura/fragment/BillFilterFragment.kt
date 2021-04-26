@@ -11,8 +11,8 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import com.example.practicafacturas.R
 import com.example.practicafacturas.databinding.FragmentFacturafiltroBinding
-import com.example.practicafacturas.ui.factura.utils.JsonToFactura
-import com.example.practicafacturas.ui.factura.viewmodel.FacturaViewModel
+import com.example.practicafacturas.ui.factura.utils.JsonToBill
+import com.example.practicafacturas.ui.factura.viewmodel.BillViewModel
 import com.example.practicafacturas.ui.factura.viewmodel.InvoiceFilter
 import com.google.android.material.slider.Slider
 import java.time.ZoneId
@@ -21,16 +21,16 @@ import java.util.*
 /**
  * A simple [Fragment] subclass as the second destination in the navigation.
  */
-class FacturaFiltroFragment : Fragment() {
-    lateinit var facturaViewModel: FacturaViewModel
+class BillFilterFragment : Fragment() {
+    lateinit var billViewModel: BillViewModel
     private lateinit var binding: FragmentFacturafiltroBinding
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         setHasOptionsMenu(true)
-        facturaViewModel = activity?.run {
-            ViewModelProvider(this).get(FacturaViewModel::class.java)
+        billViewModel = activity?.run {
+            ViewModelProvider(this).get(BillViewModel::class.java)
         } ?: throw Exception("Invalid Activity")
         binding = FragmentFacturafiltroBinding.inflate(inflater, container, false)
         return binding.root
@@ -55,10 +55,10 @@ class FacturaFiltroFragment : Fragment() {
         binding.btFilter.setOnClickListener {
 
             with(binding) {
-                val desde = JsonToFactura.dateParser(btDesde.text.toString())
-                val hasta = JsonToFactura.dateParser(btHasta.text.toString())
+                val desde = JsonToBill.dateParserToCompare(btDesde.text.toString())
+                val hasta = JsonToBill.dateParserToCompare(btHasta.text.toString())
                 if (desde.isBefore(hasta)) {
-                    facturaViewModel.setFilter(
+                    billViewModel.setFilter(
                         InvoiceFilter(
                             desde,
                             hasta,
@@ -79,7 +79,7 @@ class FacturaFiltroFragment : Fragment() {
 
         }
         binding.btEliminateFilter.setOnClickListener {
-            eliminateFilters(
+            setDefaultFilters(
                 binding.btHasta,
                 binding.btDesde,
                 binding.chkPagada,
@@ -103,17 +103,17 @@ class FacturaFiltroFragment : Fragment() {
     private fun setParams() {
         with(binding) {
             btDesde.text =
-                JsonToFactura.dateParseButton(facturaViewModel.actualFilter.desde.toString())
+                JsonToBill.dateParseForTextButton(billViewModel.actualFilter.desde.toString())
             btHasta.text =
-                JsonToFactura.dateParseButton(facturaViewModel.actualFilter.hasta.toString())
-            sldImporte.valueFrom = facturaViewModel.getMinImporte()
-            if (facturaViewModel.actualFilter.importe != facturaViewModel.defaultFilter.importe)
-                sldImporte.value = facturaViewModel.actualFilter.importe
+                JsonToBill.dateParseForTextButton(billViewModel.actualFilter.hasta.toString())
+            sldImporte.valueFrom = billViewModel.getMinImporte()
+            if (billViewModel.actualFilter.importe != billViewModel.defaultFilter.importe)
+                sldImporte.value = billViewModel.actualFilter.importe
             else
-                sldImporte.value = facturaViewModel.defaultFilter.importe
-            sldImporte.valueTo = facturaViewModel.defaultFilter.importe
-            chkPagada.isChecked = facturaViewModel.actualFilter.pagado
-            chkPendiente.isChecked = facturaViewModel.actualFilter.pendiente
+                sldImporte.value = billViewModel.defaultFilter.importe
+            sldImporte.valueTo = billViewModel.defaultFilter.importe
+            chkPagada.isChecked = billViewModel.actualFilter.pagado
+            chkPendiente.isChecked = billViewModel.actualFilter.pendiente
         }
     }
 
@@ -121,7 +121,7 @@ class FacturaFiltroFragment : Fragment() {
     /**
      * Elimina los filtros seleccionados (los pone por defecto)
      */
-    private fun eliminateFilters(
+    private fun setDefaultFilters(
         btHasta: Button,
         btDesde: Button,
         chkPagada: CheckBox,
@@ -129,14 +129,14 @@ class FacturaFiltroFragment : Fragment() {
         sldImporte: Slider
     ) {
         btDesde.text =
-            JsonToFactura.dateParseButton(facturaViewModel.defaultFilter.desde.toString())
+            JsonToBill.dateParseForTextButton(billViewModel.defaultFilter.desde.toString())
         btHasta.text =
-            JsonToFactura.dateParseButton(facturaViewModel.defaultFilter.hasta.toString())
-        sldImporte.valueFrom = facturaViewModel.getMinImporte()
-        sldImporte.value = facturaViewModel.defaultFilter.importe
-        sldImporte.valueTo = facturaViewModel.defaultFilter.importe
-        chkPagada.isChecked = facturaViewModel.defaultFilter.pagado
-        chkPendiente.isChecked = facturaViewModel.defaultFilter.pendiente
+            JsonToBill.dateParseForTextButton(billViewModel.defaultFilter.hasta.toString())
+        sldImporte.valueFrom = billViewModel.getMinImporte()
+        sldImporte.value = billViewModel.defaultFilter.importe
+        sldImporte.valueTo = billViewModel.defaultFilter.importe
+        chkPagada.isChecked = billViewModel.defaultFilter.pagado
+        chkPendiente.isChecked = billViewModel.defaultFilter.pendiente
     }
 
     /**
@@ -150,22 +150,22 @@ class FacturaFiltroFragment : Fragment() {
         val datePickerDialog = DatePickerDialog(
             requireContext(),
             DatePickerDialog.OnDateSetListener { view, year, month, dayOfMonth ->
-                makedate(dayOfMonth, month, button, year)
+                datePickerDateToValidDate(dayOfMonth, month, button, year)
             },
             year,
             month,
             day
         )
-        setDatePickerMinAndMaxValue(datePickerDialog)
+        setMinAndMaxForDatePicker(datePickerDialog)
         datePickerDialog.show()
 
     }
 
-    private fun setDatePickerMinAndMaxValue(datePickerDialog: DatePickerDialog) {
-        var min = facturaViewModel.defaultFilter.desde!!.atStartOfDay(
+    private fun setMinAndMaxForDatePicker(datePickerDialog: DatePickerDialog) {
+        var min = billViewModel.defaultFilter.desde!!.atStartOfDay(
             ZoneId.systemDefault()
         ).toInstant().toEpochMilli()
-        var max = facturaViewModel.defaultFilter.hasta!!.atStartOfDay(
+        var max = billViewModel.defaultFilter.hasta!!.atStartOfDay(
             ZoneId.systemDefault()
         ).toInstant().toEpochMilli()
 
@@ -177,7 +177,7 @@ class FacturaFiltroFragment : Fragment() {
     /**
      * Crea la fecha en un formato correcto (Si el mes no es de dos digitos lo pasa de 7 -> 07 e igual con el dia)
      */
-    private fun makedate(
+    private fun datePickerDateToValidDate(
         dayOfMonth: Int,
         month: Int,
         button: Button,

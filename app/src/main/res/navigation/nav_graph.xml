@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/listFacturaFragment"
-        android:name="com.example.practicafacturas.ui.factura.fragment.ListFacturasFragment"
+        android:name="com.example.practicafacturas.ui.factura.fragment.ListBillFragment"
         android:label="@string/listfactura_fragment"
         tools:layout="@layout/fragment_listfacturas">
 
@@ -17,7 +17,7 @@
     </fragment>
     <fragment
         android:id="@+id/facturaFiltroFragment"
-        android:name="com.example.practicafacturas.ui.factura.fragment.FacturaFiltroFragment"
+        android:name="com.example.practicafacturas.ui.factura.fragment.BillFilterFragment"
         android:label="@string/facturafiltro_fragment"
         tools:layout="@layout/fragment_facturafiltro">
 

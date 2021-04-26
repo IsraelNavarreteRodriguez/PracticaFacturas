@@ -4,11 +4,11 @@ import android.os.Bundle
 import android.view.Menu
 import androidx.appcompat.app.AppCompatActivity
 import com.example.practicafacturas.R
-import com.example.practicafacturas.ui.factura.viewmodel.FacturaViewModel
+import com.example.practicafacturas.ui.factura.viewmodel.BillViewModel
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var facturaViewModel: FacturaViewModel
+    private lateinit var billViewModel: BillViewModel
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)

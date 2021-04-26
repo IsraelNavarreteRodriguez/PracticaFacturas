@@ -4,7 +4,7 @@ import android.app.Service
 import android.content.Intent
 import android.os.IBinder
 import android.util.Log
-import com.example.practicafacturas.data.retrofit.FacturaInterface
+import com.example.practicafacturas.data.retrofit.RetrofitInterface
 import com.google.gson.JsonArray
 import kotlinx.coroutines.*
 import retrofit2.Retrofit
@@ -28,11 +28,11 @@ class DownloadService : Service() {
     /**
      * Recoge las facturas del json de https://viewnextandroid.mocklab.io/facturas/ en un hilo aparte
      */
-    private suspend fun getJsonArray() : JsonArray?{
+    private suspend fun downloadJsonArray() : JsonArray?{
         var jsonArray : JsonArray? = null
         val coroutine = CoroutineScope(Dispatchers.IO)
         val result : Deferred<JsonArray?> = coroutine.async{
-            val call = retrofit.create(FacturaInterface::class.java).getAllFacturas().execute()
+            val call = retrofit.create(RetrofitInterface::class.java).getAllBills().execute()
             if (call.isSuccessful) {
                 jsonArray = call.body()!!.get("facturas").asJsonArray
                 Log.d("json", "JsonArray:  $jsonArray")
@@ -48,6 +48,6 @@ class DownloadService : Service() {
      * Asegura que la recogida de datos sea válida y no hay errores por usar hilos diferentes
      */
     fun returnJsonArray() : JsonArray? = runBlocking {
-        getJsonArray()
+        downloadJsonArray()
     }
 }

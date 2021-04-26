@@ -7,17 +7,17 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".ui.factura.fragment.FacturaFiltroFragment">
+    tools:context=".ui.factura.fragment.BillFilterFragment">
 
 
     <TextView
         android:id="@+id/tvFiltroFacturas"
         android:layout_width="wrap_content"
-        android:textStyle="bold"
         android:layout_height="wrap_content"
         android:text="@string/tvFiltroFacturas"
         android:textColor="@color/black"
-        android:textSize="40sp" />
+        android:textSize="40sp"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/tvFechaDeAdmision"
@@ -26,7 +26,8 @@
         android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
         android:text="@string/tvFechaDeAdmision"
-        android:textColor="@color/black" />
+        android:textColor="@color/black"
+        android:textStyle="bold" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -46,12 +47,12 @@
 
         <Button
             android:id="@+id/btDesde"
+            style="@style/Theme.PracticaFacturas.Graybutton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/black"
             android:backgroundTint="@color/gray"
-            style="@style/Theme.PracticaFacturas.Graybutton"
             android:text="@string/btFecha"
+            android:textColor="@color/black"
             app:layout_constraintStart_toStartOf="@+id/tvDesde"
             app:layout_constraintTop_toBottomOf="@+id/tvDesde" />
 
@@ -66,12 +67,12 @@
 
         <Button
             android:id="@+id/btHasta"
-            android:backgroundTint="@color/gray"
-            android:layout_width="wrap_content"
-            android:textColor="@color/black"
             style="@style/Theme.PracticaFacturas.Graybutton"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:backgroundTint="@color/gray"
             android:text="@string/btFecha"
+            android:textColor="@color/black"
             app:layout_constraintStart_toStartOf="@+id/tvHasta"
             app:layout_constraintTop_toBottomOf="@+id/tvHasta" />
     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -79,9 +80,9 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:layout_marginEnd="15dp"
         android:layout_marginStart="15dp"
         android:layout_marginTop="15dp"
+        android:layout_marginEnd="15dp"
         android:background="@color/gray" />
 
     <LinearLayout
@@ -97,24 +98,25 @@
             android:layout_height="wrap_content"
             android:layout_weight="0"
             android:text="@string/tvImporte"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:textStyle="bold" />
 
         <com.google.android.material.slider.Slider
             android:id="@+id/sldImporte"
             style="@style/Widget.App.Slider"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:valueTo="100"
-            android:valueFrom="0F" />
+            android:valueFrom="0F"
+            android:valueTo="100" />
     </LinearLayout>
 
 
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:layout_marginEnd="15dp"
         android:layout_marginStart="15dp"
         android:layout_marginTop="15dp"
+        android:layout_marginEnd="15dp"
         android:background="@color/gray" />
 
     <LinearLayout
@@ -129,7 +131,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/tvPorEstado"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:textStyle="bold" />
 
         <CheckBox
             android:id="@+id/chkPagada"
@@ -148,21 +151,21 @@
     <Button
         android:id="@+id/btFilter"
         style="@style/Theme.PracticaFacturas.Greenbutton"
-        android:backgroundTint="@color/green"
         android:layout_width="200dp"
-        android:layout_gravity="center"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
         android:layout_marginTop="15dp"
+        android:backgroundTint="@color/green"
         android:text="@string/btFilter" />
 
     <Button
         android:id="@+id/btEliminateFilter"
         style="@style/Widget.AppCompat.Button.Borderless"
         android:layout_width="match_parent"
-        android:layout_marginTop="10dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         android:text="@string/btEliminateFilter"
-        android:textColor="@color/gray" />
+        android:textColor="@color/darkGray" />
 
     <include
         layout="@layout/layout_loading"

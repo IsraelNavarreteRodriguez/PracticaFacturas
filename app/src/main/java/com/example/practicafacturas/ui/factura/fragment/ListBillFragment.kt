@@ -9,28 +9,28 @@ import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.practicafacturas.R
-import com.example.practicafacturas.data.model.Factura
+import com.example.practicafacturas.data.model.Bill
 import com.example.practicafacturas.databinding.FragmentListfacturasBinding
-import com.example.practicafacturas.ui.adapter.FacturaAdapter
+import com.example.practicafacturas.ui.adapter.BillAdapter
 import com.example.practicafacturas.ui.factura.utils.HeaderDecoration
 import com.example.practicafacturas.ui.factura.utils.SpacingItemDecorator
-import com.example.practicafacturas.ui.factura.viewmodel.FacturaViewModel
+import com.example.practicafacturas.ui.factura.viewmodel.BillViewModel
 
 /**
  * A simple [Fragment] subclass as the default destination in the navigation.
  */
-class ListFacturasFragment : Fragment() {
+class ListBillFragment : Fragment() {
     private lateinit var binding: FragmentListfacturasBinding
-    private lateinit var adapter: FacturaAdapter
-    private lateinit var facturaViewModel: FacturaViewModel
+    private lateinit var adapter: BillAdapter
+    private lateinit var billViewModel: BillViewModel
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        facturaViewModel = activity?.run {
-            ViewModelProvider(this).get(FacturaViewModel::class.java)
+        billViewModel = activity?.run {
+            ViewModelProvider(this).get(BillViewModel::class.java)
         } ?: throw Exception("Invalid Activity")
-        facturaViewModel.downloadJson()
+        billViewModel.downloadJson()
 
     }
 
@@ -55,7 +55,7 @@ class ListFacturasFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         showProgress()
-        facturaViewModel.liveDataFactura.observe(viewLifecycleOwner, Observer {
+        billViewModel.liveDataBill.observe(viewLifecycleOwner, Observer {
             initializeRecycler(it)
             if (it.isEmpty())
                 noData()
@@ -80,13 +80,13 @@ class ListFacturasFragment : Fragment() {
     /**
      * Inicializa el recycler cuando hay un cambio en la lista y no se ha inicializado todavida
      */
-    private fun initializeRecycler(it: List<Factura>) {
+    private fun initializeRecycler(it: List<Bill>) {
         if (binding.rvFacturas.adapter == null) {
             val decoration = SpacingItemDecorator(
                 context = requireContext(),
                 verticalSpaceHeight = 20
             )
-            adapter = FacturaAdapter(requireContext(), it)
+            adapter = BillAdapter(requireContext(), it)
             val layoutManager: RecyclerView.LayoutManager =
                 LinearLayoutManager(context, RecyclerView.VERTICAL, false)
             binding.rvFacturas.layoutManager = layoutManager

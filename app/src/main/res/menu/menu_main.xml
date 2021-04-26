@@ -4,7 +4,7 @@
     tools:context="com.example.practicafacturas.ui.factura.activity.MainActivity">
     <item
         android:id="@+id/action_filter"
-        android:icon="@drawable/ic_baseline_filter_list_24"
+        android:icon="@drawable/ic_filter"
         android:title="@string/action_filter"
         app:showAsAction="always" />
 

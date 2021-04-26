@@ -7,10 +7,10 @@ import retrofit2.http.GET
 /**
  * Interfaz encargada de tener los metodos de Retrofit para recoger el json
  */
-interface FacturaInterface{
+interface RetrofitInterface{
     /**
-     * Metodo que recoge las facturas dehttps://viewnextandroid.mocklab.io/facturas
+     * Metodo que recoge las facturas de https://viewnextandroid.mocklab.io/facturas
      */
     @GET("facturas")
-    fun getAllFacturas() : Call<JsonObject>
+    fun getAllBills() : Call<JsonObject>
 }

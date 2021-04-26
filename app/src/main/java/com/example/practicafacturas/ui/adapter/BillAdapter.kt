@@ -8,14 +8,14 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.example.practicafacturas.R
-import com.example.practicafacturas.data.model.Factura
-import com.example.practicafacturas.ui.factura.utils.JsonToFactura
+import com.example.practicafacturas.data.model.Bill
+import com.example.practicafacturas.ui.factura.utils.JsonToBill
 
 /**
  * Es el adapter del RecyclerView de facturas
  */
-class FacturaAdapter(context: Context, list: List<Factura>) :
-    RecyclerView.Adapter<FacturaAdapter.ViewHolder>() {
+class BillAdapter(context: Context, list: List<Bill>) :
+    RecyclerView.Adapter<BillAdapter.ViewHolder>() {
 
     val context = context
     val list = list
@@ -48,7 +48,7 @@ class FacturaAdapter(context: Context, list: List<Factura>) :
          * bindea los elementos de cada factura
          */
         fun bind(position: Int) {
-            tvFecha.text = JsonToFactura.dateParserPrint(list[position].fecha.toString())
+            tvFecha.text = JsonToBill.dateParserForPrinting(list[position].fecha.toString())
             tvImporteOrdenacion.text = "${list[position].importeOrdenacion}€"
             tvDescEstado.text = checkEstado(position)
             itemView.setOnClickListener {
