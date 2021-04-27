@@ -23,7 +23,7 @@ class BillAdapter(context: Context, list: List<Bill>) :
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view: View =
-            LayoutInflater.from(parent.context).inflate(R.layout.item_factura, parent, false)
+            LayoutInflater.from(parent.context).inflate(R.layout.item_bill, parent, false)
         return ViewHolder(view)
     }
 

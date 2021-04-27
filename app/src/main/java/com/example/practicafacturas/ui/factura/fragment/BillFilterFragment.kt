@@ -10,7 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import com.example.practicafacturas.R
-import com.example.practicafacturas.databinding.FragmentFacturafiltroBinding
+import com.example.practicafacturas.databinding.FragmentBillfilterBinding
 import com.example.practicafacturas.ui.factura.utils.JsonToBill
 import com.example.practicafacturas.ui.factura.viewmodel.BillViewModel
 import com.example.practicafacturas.ui.factura.viewmodel.InvoiceFilter
@@ -23,7 +23,7 @@ import java.util.*
  */
 class BillFilterFragment : Fragment() {
     lateinit var billViewModel: BillViewModel
-    private lateinit var binding: FragmentFacturafiltroBinding
+    private lateinit var binding: FragmentBillfilterBinding
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -32,7 +32,7 @@ class BillFilterFragment : Fragment() {
         billViewModel = activity?.run {
             ViewModelProvider(this).get(BillViewModel::class.java)
         } ?: throw Exception("Invalid Activity")
-        binding = FragmentFacturafiltroBinding.inflate(inflater, container, false)
+        binding = FragmentBillfilterBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -46,25 +46,25 @@ class BillFilterFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setParams()
-        binding.btDesde.setOnClickListener {
-            setDatePicker(binding.btDesde)
+        binding.billfilterFecha.btDesde.setOnClickListener {
+            setDatePicker(binding.billfilterFecha.btDesde)
         }
-        binding.btHasta.setOnClickListener {
-            setDatePicker(binding.btHasta)
+        binding.billfilterFecha.btHasta.setOnClickListener {
+            setDatePicker(binding.billfilterFecha.btHasta)
         }
         binding.btFilter.setOnClickListener {
 
             with(binding) {
-                val desde = JsonToBill.dateParserToCompare(btDesde.text.toString())
-                val hasta = JsonToBill.dateParserToCompare(btHasta.text.toString())
+                val desde = JsonToBill.dateParserToCompare(billfilterFecha.btDesde.text.toString())
+                val hasta = JsonToBill.dateParserToCompare(billfilterFecha.btHasta.text.toString())
                 if (desde.isBefore(hasta)) {
                     billViewModel.setFilter(
                         InvoiceFilter(
                             desde,
                             hasta,
-                            sldImporte.value,
-                            chkPagada.isChecked,
-                            chkPendiente.isChecked
+                            billfilterImporte.sldImporte.value,
+                            billfilterEstado.chkPagada.isChecked,
+                            billfilterEstado.chkPendiente.isChecked
                         )
                     )
                     view.findNavController()
@@ -80,11 +80,11 @@ class BillFilterFragment : Fragment() {
         }
         binding.btEliminateFilter.setOnClickListener {
             setDefaultFilters(
-                binding.btHasta,
-                binding.btDesde,
-                binding.chkPagada,
-                binding.chkPendiente,
-                binding.sldImporte
+                binding.billfilterFecha.btHasta,
+                binding.billfilterFecha.btDesde,
+                binding.billfilterEstado.chkPagada,
+                binding.billfilterEstado.chkPendiente,
+                binding.billfilterImporte.sldImporte
             )
         }
     }
@@ -102,18 +102,18 @@ class BillFilterFragment : Fragment() {
 
     private fun setParams() {
         with(binding) {
-            btDesde.text =
+            billfilterFecha.btDesde.text =
                 JsonToBill.dateParseForTextButton(billViewModel.actualFilter.desde.toString())
-            btHasta.text =
+            billfilterFecha.btHasta.text =
                 JsonToBill.dateParseForTextButton(billViewModel.actualFilter.hasta.toString())
-            sldImporte.valueFrom = billViewModel.getMinImporte()
+            billfilterImporte.sldImporte.valueFrom = billViewModel.getMinImporte()
             if (billViewModel.actualFilter.importe != billViewModel.defaultFilter.importe)
-                sldImporte.value = billViewModel.actualFilter.importe
+                billfilterImporte.sldImporte.value = billViewModel.actualFilter.importe
             else
-                sldImporte.value = billViewModel.defaultFilter.importe
-            sldImporte.valueTo = billViewModel.defaultFilter.importe
-            chkPagada.isChecked = billViewModel.actualFilter.pagado
-            chkPendiente.isChecked = billViewModel.actualFilter.pendiente
+                billfilterImporte.sldImporte.value = billViewModel.defaultFilter.importe
+            billfilterImporte.sldImporte.valueTo = billViewModel.defaultFilter.importe
+            billfilterEstado.chkPagada.isChecked = billViewModel.actualFilter.pagado
+            billfilterEstado.chkPendiente.isChecked = billViewModel.actualFilter.pendiente
         }
     }
 

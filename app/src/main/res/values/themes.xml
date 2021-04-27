@@ -25,12 +25,12 @@
 
     <style name="Theme.PracticaFacturas.Greenbutton" parent="Theme.PracticaFacturas">
         <item name="colorPrimary">@color/green</item>
-        <item name="android:drawable">@drawable/botones_redondos</item>
+        <item name="android:drawable">@drawable/round_buttons</item>
     </style>
 
     <style name="Theme.PracticaFacturas.Graybutton" parent="Theme.PracticaFacturas">
         <item name="colorPrimary">@color/gray</item>
-        <item name="android:drawable">@drawable/botones_redondos</item>
+        <item name="android:drawable">@drawable/round_buttons</item>
     </style>
 
     <style name="Theme.App" parent="Theme.MaterialComponents">

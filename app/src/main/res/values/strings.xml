@@ -12,7 +12,7 @@
     <string name="tvFecha">Fecha</string>
     <string name="importeOrdenacion">importe ordenacion</string>
     <string name="descEstado">estado</string>
-    <string name="tvFechaDeAdmision">Con fecha de admision</string>
+    <string name="tvFechaDeEmision">Con fecha de emisión</string>
     <string name="btFecha">dia/mes/año</string>
     <string name="tvHasta">Hasta:</string>
     <string name="tvDesde">Desde</string>

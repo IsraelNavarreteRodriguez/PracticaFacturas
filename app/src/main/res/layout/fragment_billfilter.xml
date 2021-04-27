@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ui.factura.fragment.BillFilterFragment">
+
+
+    <TextView
+        android:id="@+id/tvFiltroFacturas"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/tvFiltroFacturas"
+        android:textColor="@color/black"
+        android:textSize="40sp"
+        android:textStyle="bold" />
+
+    <include layout="@layout/fragment_billfilter_fecha"
+        android:id="@+id/billfilter_fecha"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="15dp"
+        android:background="@color/gray" />
+
+   <include
+       layout="@layout/fragment_billfilter_importe"
+       android:id="@+id/billfilter_importe"/>
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="15dp"
+        android:background="@color/gray" />
+
+    <include layout="@layout/fragment_billfilter_estado"
+        android:id="@+id/billfilter_estado"/>
+
+
+    <Button
+        android:id="@+id/btFilter"
+        style="@style/Theme.PracticaFacturas.Greenbutton"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="15dp"
+        android:backgroundTint="@color/green"
+        android:text="@string/btFilter" />
+
+    <Button
+        android:id="@+id/btEliminateFilter"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="@string/btEliminateFilter"
+        android:textColor="@color/darkGray" />
+
+    <include
+        layout="@layout/layout_loading"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+</LinearLayout>

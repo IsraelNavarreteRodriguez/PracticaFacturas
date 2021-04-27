@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.practicafacturas.R
 import com.example.practicafacturas.data.model.Bill
-import com.example.practicafacturas.databinding.FragmentListfacturasBinding
+import com.example.practicafacturas.databinding.FragmentListbillBinding
 import com.example.practicafacturas.ui.adapter.BillAdapter
 import com.example.practicafacturas.ui.factura.utils.HeaderDecoration
 import com.example.practicafacturas.ui.factura.utils.SpacingItemDecorator
@@ -20,7 +20,7 @@ import com.example.practicafacturas.ui.factura.viewmodel.BillViewModel
  * A simple [Fragment] subclass as the default destination in the navigation.
  */
 class ListBillFragment : Fragment() {
-    private lateinit var binding: FragmentListfacturasBinding
+    private lateinit var binding: FragmentListbillBinding
     private lateinit var adapter: BillAdapter
     private lateinit var billViewModel: BillViewModel
 
@@ -41,7 +41,7 @@ class ListBillFragment : Fragment() {
     ): View? {
         setHasOptionsMenu(true)
         binding =
-            FragmentListfacturasBinding.inflate(inflater, container, false)
+            FragmentListbillBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -120,14 +120,14 @@ class ListBillFragment : Fragment() {
      * Si no hay datos muestra el mensaje de noData
      */
     private fun noData() {
-        binding.NoData.visibility = View.VISIBLE
+        binding.noData.NoData.visibility = View.VISIBLE
     }
 
     /**
      * Si hay datos oculta el mensaje de noData
      */
     private fun hasData() {
-        binding.NoData.visibility = View.GONE
+        binding.noData.NoData.visibility = View.GONE
     }
 
     //endregion
