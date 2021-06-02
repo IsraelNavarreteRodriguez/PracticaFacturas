@@ -1,0 +1,420 @@
+[2021.05.18 12:30:03] (Coverage): Error in project data collection: touchLine
+java.lang.reflect.InvocationTargetException
+	at sun.reflect.GeneratedMethodAccessor1.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at com.intellij.rt.coverage.data.ProjectData$MethodCaller.invoke(ProjectData.java:363)
+	at com.intellij.rt.coverage.data.ProjectData.touch(ProjectData.java:287)
+	at com.intellij.rt.coverage.data.ProjectData.touchLine(ProjectData.java:242)
+	at kotlinx.coroutines.internal.DispatchedContinuation.toString(DispatchedContinuation.kt:251)
+	at java.lang.String.valueOf(String.java:2994)
+	at java.lang.StringBuilder.append(StringBuilder.java:131)
+	at kotlinx.coroutines.DispatchedTask.handleFatalException$kotlinx_coroutines_core(DispatchedTask.kt:144)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:115)
+	at androidx.room.TransactionExecutor$1.run(TransactionExecutor.java:47)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.lang.NullPointerException
+	at com.intellij.rt.coverage.data.ClassData.touchLine(ClassData.java:112)
+	... 15 more
+[2021.05.18 12:30:03] (Coverage): Error in project data collection: touchLine
+java.lang.reflect.InvocationTargetException
+	at sun.reflect.GeneratedMethodAccessor1.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at com.intellij.rt.coverage.data.ProjectData$MethodCaller.invoke(ProjectData.java:363)
+	at com.intellij.rt.coverage.data.ProjectData.touch(ProjectData.java:287)
+	at com.intellij.rt.coverage.data.ProjectData.touchLine(ProjectData.java:242)
+	at kotlinx.coroutines.internal.DispatchedContinuation.getDelegate$kotlinx_coroutines_core(DispatchedContinuation.kt:176)
+	at kotlinx.coroutines.DispatchedTask.handleFatalException$kotlinx_coroutines_core(DispatchedTask.kt:146)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:115)
+	at androidx.room.TransactionExecutor$1.run(TransactionExecutor.java:47)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.lang.NullPointerException
+	at com.intellij.rt.coverage.data.ClassData.touchLine(ClassData.java:112)
+	... 13 more
+[2021.05.18 12:31:35] (Coverage): Error in project data collection: touchLine
+java.lang.reflect.InvocationTargetException
+	at sun.reflect.GeneratedMethodAccessor1.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at com.intellij.rt.coverage.data.ProjectData$MethodCaller.invoke(ProjectData.java:363)
+	at com.intellij.rt.coverage.data.ProjectData.touch(ProjectData.java:287)
+	at com.intellij.rt.coverage.data.ProjectData.touchLine(ProjectData.java:242)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:230)
+	at androidx.room.TransactionExecutor$1.run(TransactionExecutor.java:47)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.lang.NullPointerException
+	at com.intellij.rt.coverage.data.ClassData.touchLine(ClassData.java:112)
+	... 11 more
+[2021.05.18 12:31:35] (Coverage): Error in project data collection: touchLine
+java.lang.reflect.InvocationTargetException
+	at sun.reflect.GeneratedMethodAccessor1.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at com.intellij.rt.coverage.data.ProjectData$MethodCaller.invoke(ProjectData.java:363)
+	at com.intellij.rt.coverage.data.ProjectData.touch(ProjectData.java:287)
+	at com.intellij.rt.coverage.data.ProjectData.touchLine(ProjectData.java:242)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:110)
+	at androidx.room.TransactionExecutor$1.run(TransactionExecutor.java:47)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.lang.NullPointerException
+	at com.intellij.rt.coverage.data.ClassData.touchLine(ClassData.java:112)
+	... 11 more
+[2021.05.18 12:31:35] (Coverage): Error in project data collection: touchLine
+java.lang.reflect.InvocationTargetException
+	at sun.reflect.GeneratedMethodAccessor1.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at com.intellij.rt.coverage.data.ProjectData$MethodCaller.invoke(ProjectData.java:363)
+	at com.intellij.rt.coverage.data.ProjectData.touch(ProjectData.java:287)
+	at com.intellij.rt.coverage.data.ProjectData.touchLine(ProjectData.java:242)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:112)
+	at androidx.room.TransactionExecutor$1.run(TransactionExecutor.java:47)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.lang.NullPointerException
+	at com.intellij.rt.coverage.data.ClassData.touchLine(ClassData.java:112)
+	... 11 more
+[2021.05.18 12:31:35] (Coverage): Error in project data collection: touchLine
+java.lang.reflect.InvocationTargetException
+	at sun.reflect.GeneratedMethodAccessor1.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at com.intellij.rt.coverage.data.ProjectData$MethodCaller.invoke(ProjectData.java:363)
+	at com.intellij.rt.coverage.data.ProjectData.touch(ProjectData.java:287)
+	at com.intellij.rt.coverage.data.ProjectData.touchLine(ProjectData.java:242)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:114)
+	at androidx.room.TransactionExecutor$1.run(TransactionExecutor.java:47)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.lang.NullPointerException
+	at com.intellij.rt.coverage.data.ClassData.touchLine(ClassData.java:112)
+	... 11 more
+[2021.05.18 12:31:35] (Coverage): Error in project data collection: touchLine
+java.lang.reflect.InvocationTargetException
+	at sun.reflect.GeneratedMethodAccessor1.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at com.intellij.rt.coverage.data.ProjectData$MethodCaller.invoke(ProjectData.java:363)
+	at com.intellij.rt.coverage.data.ProjectData.touch(ProjectData.java:287)
+	at com.intellij.rt.coverage.data.ProjectData.touchLine(ProjectData.java:242)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:222)
+	at androidx.room.TransactionExecutor$1.run(TransactionExecutor.java:47)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.lang.NullPointerException
+	at com.intellij.rt.coverage.data.ClassData.touchLine(ClassData.java:112)
+	... 11 more
+[2021.05.18 12:31:35] (Coverage): Error in project data collection: touchLine
+java.lang.reflect.InvocationTargetException
+	at sun.reflect.GeneratedMethodAccessor1.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at com.intellij.rt.coverage.data.ProjectData$MethodCaller.invoke(ProjectData.java:363)
+	at com.intellij.rt.coverage.data.ProjectData.touch(ProjectData.java:287)
+	at com.intellij.rt.coverage.data.ProjectData.touchLine(ProjectData.java:242)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:114)
+	at androidx.room.TransactionExecutor$1.run(TransactionExecutor.java:47)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.lang.NullPointerException
+	at com.intellij.rt.coverage.data.ClassData.touchLine(ClassData.java:112)
+	... 11 more
+[2021.05.18 12:31:35] (Coverage): Error in project data collection: touchLine
+java.lang.reflect.InvocationTargetException
+	at sun.reflect.GeneratedMethodAccessor1.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at com.intellij.rt.coverage.data.ProjectData$MethodCaller.invoke(ProjectData.java:363)
+	at com.intellij.rt.coverage.data.ProjectData.touch(ProjectData.java:287)
+	at com.intellij.rt.coverage.data.ProjectData.touchLine(ProjectData.java:242)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:114)
+	at androidx.room.TransactionExecutor$1.run(TransactionExecutor.java:47)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.lang.NullPointerException
+	at com.intellij.rt.coverage.data.ClassData.touchLine(ClassData.java:112)
+	... 11 more
+[2021.05.18 12:31:35] (Coverage): Error in project data collection: touchLine
+java.lang.reflect.InvocationTargetException
+	at sun.reflect.GeneratedMethodAccessor1.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at com.intellij.rt.coverage.data.ProjectData$MethodCaller.invoke(ProjectData.java:363)
+	at com.intellij.rt.coverage.data.ProjectData.touch(ProjectData.java:287)
+	at com.intellij.rt.coverage.data.ProjectData.touchLine(ProjectData.java:242)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:114)
+	at androidx.room.TransactionExecutor$1.run(TransactionExecutor.java:47)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.lang.NullPointerException
+	at com.intellij.rt.coverage.data.ClassData.touchLine(ClassData.java:112)
+	... 11 more
+[2021.05.18 12:31:35] (Coverage): Error in project data collection: touchLine
+java.lang.reflect.InvocationTargetException
+	at sun.reflect.GeneratedMethodAccessor1.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at com.intellij.rt.coverage.data.ProjectData$MethodCaller.invoke(ProjectData.java:363)
+	at com.intellij.rt.coverage.data.ProjectData.touch(ProjectData.java:287)
+	at com.intellij.rt.coverage.data.ProjectData.touchLine(ProjectData.java:242)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:115)
+	at androidx.room.TransactionExecutor$1.run(TransactionExecutor.java:47)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.lang.NullPointerException
+	at com.intellij.rt.coverage.data.ClassData.touchLine(ClassData.java:112)
+	... 11 more
+[2021.05.18 12:31:35] (Coverage): Error in project data collection: touchLine
+java.lang.reflect.InvocationTargetException
+	at sun.reflect.GeneratedMethodAccessor1.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at com.intellij.rt.coverage.data.ProjectData$MethodCaller.invoke(ProjectData.java:363)
+	at com.intellij.rt.coverage.data.ProjectData.touch(ProjectData.java:287)
+	at com.intellij.rt.coverage.data.ProjectData.touchLine(ProjectData.java:242)
+	at kotlinx.coroutines.DispatchedTask.handleFatalException$kotlinx_coroutines_core(DispatchedTask.kt:138)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:115)
+	at androidx.room.TransactionExecutor$1.run(TransactionExecutor.java:47)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.lang.NullPointerException
+	at com.intellij.rt.coverage.data.ClassData.touchLine(ClassData.java:112)
+	... 12 more
+[2021.05.18 12:31:35] (Coverage): Error in project data collection: touchLine
+java.lang.reflect.InvocationTargetException
+	at sun.reflect.GeneratedMethodAccessor1.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at com.intellij.rt.coverage.data.ProjectData$MethodCaller.invoke(ProjectData.java:363)
+	at com.intellij.rt.coverage.data.ProjectData.touch(ProjectData.java:287)
+	at com.intellij.rt.coverage.data.ProjectData.touchLine(ProjectData.java:242)
+	at kotlinx.coroutines.DispatchedTask.handleFatalException$kotlinx_coroutines_core(DispatchedTask.kt:139)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:115)
+	at androidx.room.TransactionExecutor$1.run(TransactionExecutor.java:47)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.lang.NullPointerException
+	at com.intellij.rt.coverage.data.ClassData.touchLine(ClassData.java:112)
+	... 12 more
+[2021.05.18 12:31:35] (Coverage): Error in project data collection: touchLine
+java.lang.reflect.InvocationTargetException
+	at sun.reflect.GeneratedMethodAccessor1.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at com.intellij.rt.coverage.data.ProjectData$MethodCaller.invoke(ProjectData.java:363)
+	at com.intellij.rt.coverage.data.ProjectData.touch(ProjectData.java:287)
+	at com.intellij.rt.coverage.data.ProjectData.touchLine(ProjectData.java:242)
+	at kotlinx.coroutines.DispatchedTask.handleFatalException$kotlinx_coroutines_core(DispatchedTask.kt:143)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:115)
+	at androidx.room.TransactionExecutor$1.run(TransactionExecutor.java:47)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.lang.NullPointerException
+	at com.intellij.rt.coverage.data.ClassData.touchLine(ClassData.java:112)
+	... 12 more
+[2021.05.18 12:31:35] (Coverage): Error in project data collection: touchLine
+java.lang.reflect.InvocationTargetException
+	at sun.reflect.GeneratedMethodAccessor1.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at com.intellij.rt.coverage.data.ProjectData$MethodCaller.invoke(ProjectData.java:363)
+	at com.intellij.rt.coverage.data.ProjectData.touch(ProjectData.java:287)
+	at com.intellij.rt.coverage.data.ProjectData.touchLine(ProjectData.java:242)
+	at kotlinx.coroutines.DispatchedTask.handleFatalException$kotlinx_coroutines_core(DispatchedTask.kt:144)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:115)
+	at androidx.room.TransactionExecutor$1.run(TransactionExecutor.java:47)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.lang.NullPointerException
+	at com.intellij.rt.coverage.data.ClassData.touchLine(ClassData.java:112)
+	... 12 more
+[2021.05.18 12:31:35] (Coverage): Error in project data collection: touchLine
+java.lang.reflect.InvocationTargetException
+	at sun.reflect.GeneratedMethodAccessor1.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at com.intellij.rt.coverage.data.ProjectData$MethodCaller.invoke(ProjectData.java:363)
+	at com.intellij.rt.coverage.data.ProjectData.touch(ProjectData.java:287)
+	at com.intellij.rt.coverage.data.ProjectData.touchLine(ProjectData.java:242)
+	at kotlinx.coroutines.internal.DispatchedContinuation.toString(DispatchedContinuation.kt:251)
+	at java.lang.String.valueOf(String.java:2994)
+	at java.lang.StringBuilder.append(StringBuilder.java:131)
+	at kotlinx.coroutines.DispatchedTask.handleFatalException$kotlinx_coroutines_core(DispatchedTask.kt:144)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:115)
+	at androidx.room.TransactionExecutor$1.run(TransactionExecutor.java:47)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.lang.NullPointerException
+	at com.intellij.rt.coverage.data.ClassData.touchLine(ClassData.java:112)
+	... 15 more
+[2021.05.18 12:31:35] (Coverage): Error in project data collection: touchLine
+java.lang.reflect.InvocationTargetException
+	at sun.reflect.GeneratedMethodAccessor1.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at com.intellij.rt.coverage.data.ProjectData$MethodCaller.invoke(ProjectData.java:363)
+	at com.intellij.rt.coverage.data.ProjectData.touch(ProjectData.java:287)
+	at com.intellij.rt.coverage.data.ProjectData.touchLine(ProjectData.java:242)
+	at kotlinx.coroutines.DispatchedTask.handleFatalException$kotlinx_coroutines_core(DispatchedTask.kt:145)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:115)
+	at androidx.room.TransactionExecutor$1.run(TransactionExecutor.java:47)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.lang.NullPointerException
+[2021.05.18 12:31:35] (Coverage): Error in project data collection: touchLine
+java.lang.reflect.InvocationTargetException
+	at sun.reflect.GeneratedMethodAccessor1.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at com.intellij.rt.coverage.data.ProjectData$MethodCaller.invoke(ProjectData.java:363)
+	at com.intellij.rt.coverage.data.ProjectData.touch(ProjectData.java:287)
+	at com.intellij.rt.coverage.data.ProjectData.touchLine(ProjectData.java:242)
+	at kotlinx.coroutines.DispatchedTask.handleFatalException$kotlinx_coroutines_core(DispatchedTask.kt:144)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:115)
+	at androidx.room.TransactionExecutor$1.run(TransactionExecutor.java:47)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.lang.NullPointerException
+[2021.05.18 12:31:35] (Coverage): Error in project data collection: touchLine
+java.lang.reflect.InvocationTargetException
+	at sun.reflect.GeneratedMethodAccessor1.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at com.intellij.rt.coverage.data.ProjectData$MethodCaller.invoke(ProjectData.java:363)
+	at com.intellij.rt.coverage.data.ProjectData.touch(ProjectData.java:287)
+	at com.intellij.rt.coverage.data.ProjectData.touchLine(ProjectData.java:242)
+	at kotlinx.coroutines.DispatchedTask.handleFatalException$kotlinx_coroutines_core(DispatchedTask.kt:146)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:115)
+	at androidx.room.TransactionExecutor$1.run(TransactionExecutor.java:47)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.lang.NullPointerException
+[2021.05.18 12:31:35] (Coverage): Error in project data collection: touchLine
+java.lang.reflect.InvocationTargetException
+	at sun.reflect.GeneratedMethodAccessor1.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at com.intellij.rt.coverage.data.ProjectData$MethodCaller.invoke(ProjectData.java:363)
+	at com.intellij.rt.coverage.data.ProjectData.touch(ProjectData.java:287)
+	at com.intellij.rt.coverage.data.ProjectData.touchLine(ProjectData.java:242)
+	at kotlinx.coroutines.internal.DispatchedContinuation.getDelegate$kotlinx_coroutines_core(DispatchedContinuation.kt:176)
+	at kotlinx.coroutines.DispatchedTask.handleFatalException$kotlinx_coroutines_core(DispatchedTask.kt:146)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:115)
+	at androidx.room.TransactionExecutor$1.run(TransactionExecutor.java:47)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.lang.NullPointerException
+[2021.05.19 10:20:30] (Coverage): Error in project data collection: touchLine
+java.lang.reflect.InvocationTargetException
+	at sun.reflect.GeneratedMethodAccessor1.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at com.intellij.rt.coverage.data.ProjectData$MethodCaller.invoke(ProjectData.java:363)
+	at com.intellij.rt.coverage.data.ProjectData.touch(ProjectData.java:287)
+	at com.intellij.rt.coverage.data.ProjectData.touchLine(ProjectData.java:242)
+	at kotlinx.coroutines.internal.DispatchedContinuation.toString(DispatchedContinuation.kt:251)
+	at java.lang.String.valueOf(String.java:2994)
+	at java.lang.StringBuilder.append(StringBuilder.java:131)
+	at kotlinx.coroutines.DispatchedTask.handleFatalException$kotlinx_coroutines_core(DispatchedTask.kt:144)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:115)
+	at androidx.room.TransactionExecutor$1.run(TransactionExecutor.java:47)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.lang.NullPointerException
+	at com.intellij.rt.coverage.data.ClassData.touchLine(ClassData.java:112)
+	... 15 more
+[2021.05.19 10:20:30] (Coverage): Error in project data collection: touchLine
+java.lang.reflect.InvocationTargetException
+	at sun.reflect.GeneratedMethodAccessor1.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at com.intellij.rt.coverage.data.ProjectData$MethodCaller.invoke(ProjectData.java:363)
+	at com.intellij.rt.coverage.data.ProjectData.touch(ProjectData.java:287)
+	at com.intellij.rt.coverage.data.ProjectData.touchLine(ProjectData.java:242)
+	at kotlinx.coroutines.DispatchedTask.handleFatalException$kotlinx_coroutines_core(DispatchedTask.kt:145)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:115)
+	at androidx.room.TransactionExecutor$1.run(TransactionExecutor.java:47)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.lang.NullPointerException
+	at com.intellij.rt.coverage.data.ClassData.touchLine(ClassData.java:112)
+	... 12 more
+[2021.05.19 10:20:30] (Coverage): Error in project data collection: touchLine
+java.lang.reflect.InvocationTargetException
+	at sun.reflect.GeneratedMethodAccessor1.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at com.intellij.rt.coverage.data.ProjectData$MethodCaller.invoke(ProjectData.java:363)
+	at com.intellij.rt.coverage.data.ProjectData.touch(ProjectData.java:287)
+	at com.intellij.rt.coverage.data.ProjectData.touchLine(ProjectData.java:242)
+	at kotlinx.coroutines.DispatchedTask.handleFatalException$kotlinx_coroutines_core(DispatchedTask.kt:144)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:115)
+	at androidx.room.TransactionExecutor$1.run(TransactionExecutor.java:47)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.lang.NullPointerException
+	at com.intellij.rt.coverage.data.ClassData.touchLine(ClassData.java:112)
+	... 12 more
+[2021.05.19 10:20:30] (Coverage): Error in project data collection: touchLine
+java.lang.reflect.InvocationTargetException
+	at sun.reflect.GeneratedMethodAccessor1.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at com.intellij.rt.coverage.data.ProjectData$MethodCaller.invoke(ProjectData.java:363)
+	at com.intellij.rt.coverage.data.ProjectData.touch(ProjectData.java:287)
+	at com.intellij.rt.coverage.data.ProjectData.touchLine(ProjectData.java:242)
+	at kotlinx.coroutines.DispatchedTask.handleFatalException$kotlinx_coroutines_core(DispatchedTask.kt:146)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:115)
+	at androidx.room.TransactionExecutor$1.run(TransactionExecutor.java:47)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.lang.NullPointerException
+	at com.intellij.rt.coverage.data.ClassData.touchLine(ClassData.java:112)
+	... 12 more
+[2021.05.19 10:20:30] (Coverage): Error in project data collection: touchLine
+java.lang.reflect.InvocationTargetException
+	at sun.reflect.GeneratedMethodAccessor1.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at com.intellij.rt.coverage.data.ProjectData$MethodCaller.invoke(ProjectData.java:363)
+	at com.intellij.rt.coverage.data.ProjectData.touch(ProjectData.java:287)
+	at com.intellij.rt.coverage.data.ProjectData.touchLine(ProjectData.java:242)
+	at kotlinx.coroutines.internal.DispatchedContinuation.getDelegate$kotlinx_coroutines_core(DispatchedContinuation.kt:176)
+	at kotlinx.coroutines.DispatchedTask.handleFatalException$kotlinx_coroutines_core(DispatchedTask.kt:146)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:115)
+	at androidx.room.TransactionExecutor$1.run(TransactionExecutor.java:47)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.lang.NullPointerException
+	at com.intellij.rt.coverage.data.ClassData.touchLine(ClassData.java:112)
+	... 13 more

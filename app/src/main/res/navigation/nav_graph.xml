@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/listFacturaFragment">
+
+    <fragment
+        android:id="@+id/listFacturaFragment"
+        android:name="com.example.practicafacturas.presentation.ListBillFragment"
+        android:label="@string/listfactura_fragment"
+        tools:layout="@layout/fragment_listbill">
+
+        <action
+            android:id="@+id/action_listFacturaFragment_to_facturaFiltroFragment"
+            app:destination="@id/facturaFiltroFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/facturaFiltroFragment"
+        android:name="com.example.practicafacturas.presentation.BillFilterFragment"
+        android:label="@string/facturafiltro_fragment"
+        tools:layout="@layout/fragment_billfilter">
+
+        <action
+            android:id="@+id/action_facturaFiltroFragment_to_listFacturaFragment"
+            app:destination="@id/listFacturaFragment" />
+    </fragment>
+</navigation>
